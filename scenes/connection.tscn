@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://2c25uk6kwqyi"]
+
+[ext_resource type="Script" path="res://scenes/connection.gd" id="1_8wktt"]
+[ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="1_no3tg"]
+[ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="2_o0oak"]
+
+[node name="Connection" type="Node2D"]
+position = Vector2(227, 111)
+scale = Vector2(0.05, 0.05)
+script = ExtResource("1_8wktt")
+
+[node name="Outer Circle" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+texture = ExtResource("1_no3tg")
+
+[node name="Inner Circle" type="Sprite2D" parent="."]
+texture = ExtResource("2_o0oak")
