@@ -24,7 +24,12 @@ var pricePerPixel = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	place_wire_begin()
+	var preexisting = get_tree().get_nodes_in_group("Connection")
+	for pCon in preexisting:
+		placedConnectors.append(pCon)
+		placedConnectorsLocations.append(pCon.position)
+		connectorCount += 1
+	#place_wire_begin()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -78,9 +83,11 @@ func _input(event):
 		if not skip:
 			var connection_instance = connection_scene.instantiate()
 			connection_instance.set_meta("index", connectorCount)
+			connection_instance.set_meta("fromPlacer_canBeDeleted", true)
 			connection_instance.place_wire_begin_signal.connect(place_wire_begin)
 			connection_instance.position = get_viewport().get_mouse_position()
 			placedConnectorsLocations.append(connection_instance.position)
+			placedConnectors.append(connection_instance)
 			print("New connector")
 			connectorCount += 1
 			cost += connectorPrice
@@ -104,8 +111,10 @@ func _input(event):
 		place_wire_begin()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_W:
 		print(wires)
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_C:
+		print(placedConnectorsLocations)	
 	elif not GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		if GlobalData.hovering_on != -1:
+		if GlobalData.hovering_on != -1 and placedConnectors[GlobalData.hovering_on].get_meta("fromPlacer_canBeDeleted"):
 			print("We should be deleting: ", GlobalData.hovering_on)
 			var windex = 0
 			print("Wires: ", wires)
@@ -130,6 +139,7 @@ func _input(event):
 			elif GlobalData.activeConnector > GlobalData.hovering_on:
 				GlobalData.activeConnector -= 1
 			placedConnectorsLocations.pop_at(GlobalData.hovering_on)
+			placedConnectors.pop_at(GlobalData.hovering_on)
 			connectorCount -= 1
 			connectorDeleted.emit(GlobalData.hovering_on)
 

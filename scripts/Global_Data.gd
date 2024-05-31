@@ -6,7 +6,7 @@ var cur_cost = 0
 var push_now = false
 
 #for connection.gd and wirePlacing.gd
-var placing_mode_on = true
+var placing_mode_on = false
 var activeConnector = -1
 var hovering_on = -1
 

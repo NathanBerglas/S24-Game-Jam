@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ogoxlk10g7fb"]
+
+[ext_resource type="PackedScene" uid="uid://ml872aqpiu0a" path="res://scenes/wire_placing.tscn" id="1_cc1hu"]
+[ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="2_6kosr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Wire Placing" parent="." instance=ExtResource("1_cc1hu")]
+
+[node name="Connection" parent="." instance=ExtResource("2_6kosr")]
+position = Vector2(620, 437)

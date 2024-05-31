@@ -9,20 +9,21 @@ script/source = "extends Node2D
 signal place_wire_begin_signal
 
 @export var hover: Sprite2D
+@export var outerCircle: Sprite2D
 
 var mouse_hover = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var wire_placing = get_parent()
-	if wire_placing:
+	if wire_placing and self.get_meta(\"fromPlacer_canBeDeleted\"):
 		wire_placing.connectorDeleted.connect(_on_connectorDeleted)
+	outerCircle.modulate = self.get_meta(\"connectionColour\")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	hover.visible = mouse_hover and not GlobalData.placing_mode_on
 
-		
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if not GlobalData.placing_mode_on and event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		GlobalData.activeConnector = self.get_meta(\"index\")
@@ -30,6 +31,7 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 
 func _on_connectorDeleted(index):
 	if self.get_meta(\"index\") == index:
+		GlobalData.hovering_on = -1
 		queue_free()
 	if self.get_meta(\"index\") > index:
 		self.set_meta(\"index\", self.get_meta(\"index\") - 1)
@@ -46,14 +48,16 @@ func _on_area_2d_mouse_entered():
 [sub_resource type="CircleShape2D" id="CircleShape2D_002vn"]
 radius = 520.0
 
-[node name="Connection" type="Node2D" node_paths=PackedStringArray("hover")]
+[node name="Connection" type="Node2D" node_paths=PackedStringArray("hover", "outerCircle") groups=["Connection"]]
 scale = Vector2(0.05, 0.05)
 script = SubResource("GDScript_tbos6")
 hover = NodePath("Hover")
+outerCircle = NodePath("Outer Circle")
 metadata/index = -1
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/fromPlacer_canBeDeleted = false
 
 [node name="Outer Circle" type="Sprite2D" parent="."]
-modulate = Color(0.807843, 0, 0.337255, 1)
 texture = ExtResource("1_no3tg")
 
 [node name="Inner Circle" type="Sprite2D" parent="."]
