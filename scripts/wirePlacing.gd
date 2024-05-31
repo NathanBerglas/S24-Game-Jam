@@ -18,6 +18,8 @@ var do_draw_line = false
 var connectorPrice = 1000
 var pricePerPixel = 1
 
+var activeConnector = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -26,10 +28,11 @@ func _ready():
 func _process(delta):
 	cursor.position = get_viewport().get_mouse_position()
 	if (connectorCount >= 2):
-		additionalCost = connectorPrice + get_viewport().get_mouse_position().distance_to(placedConnectorsLocations[connectorCount - 1]) * pricePerPixel
+		additionalCost = connectorPrice + get_viewport().get_mouse_position().distance_to(placedConnectorsLocations[activeConnector]) * pricePerPixel
 		for placedConLoc in placedConnectorsLocations:
-			if get_viewport().get_mouse_position().distance_to(placedConLoc) < 100:
+			if get_viewport().get_mouse_position().distance_to(placedConLoc) < 50:
 				additionalCost -= connectorPrice
+				cursor.position = placedConLoc
 	print(additionalCost)
 	queue_redraw()
 
@@ -39,7 +42,7 @@ func _input(event):
 			var index = 0
 			var skip = false
 			for placedConLoc in placedConnectorsLocations:
-				if get_viewport().get_mouse_position().distance_to(placedConLoc) < 100:
+				if get_viewport().get_mouse_position().distance_to(placedConLoc) < 50:
 					wires.append([connectorCount - 1, index])
 					skip = true
 				index += 1
@@ -54,9 +57,10 @@ func _input(event):
 					cost += connection_instance.position.distance_to(placedConnectorsLocations[connectorCount - 2]) * pricePerPixel
 					wires.append([connectorCount - 2, connectorCount - 1])
 				add_child(connection_instance)
+				activeConnector = connectorCount - 1
 
 func _draw():
 	for wire in wires:
 		draw_line(placedConnectorsLocations[wire[0]], placedConnectorsLocations[wire[1]], Color.RED, 15.0)
 	if connectorCount != 0:
-		draw_line(placedConnectorsLocations[connectorCount - 1], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)
+		draw_line(placedConnectorsLocations[activeConnector], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)
