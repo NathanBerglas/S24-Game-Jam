@@ -29,23 +29,28 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var connection_instance = connection_scene.instantiate()
-			connection_instance.position = get_viewport().get_mouse_position()
-			placedConnectors.append(connection_instance)
-			placedConnectorsLocations.append(connection_instance.position)
-			connectorCount += 1
-			cost += connectorPrice
-			if connectorCount >= 2:
-				cost += connection_instance.position.distance_to(placedConnectorsLocations[connectorCount - 2]) * pricePerPixel
-				wires.append(connectorCount - 2, connectorCount - 1)
-			add_child(connection_instance)
-		
+			var index = 0
+			var skip = false
+			for placedConLoc in placedConnectorsLocations:
+				if get_viewport().get_mouse_position().distance_to(placedConLoc) < 100:
+					wires.append([connectorCount - 1, index])
+					skip = true
+				index += 1
+			if not skip:
+				var connection_instance = connection_scene.instantiate()
+				connection_instance.position = get_viewport().get_mouse_position()
+				placedConnectors.append(connection_instance)
+				placedConnectorsLocations.append(connection_instance.position)
+				connectorCount += 1
+				cost += connectorPrice
+				if connectorCount >= 2:
+					cost += connection_instance.position.distance_to(placedConnectorsLocations[connectorCount - 2]) * pricePerPixel
+					wires.append([connectorCount - 2, connectorCount - 1])
+				add_child(connection_instance)
+				print(cost)
+
 func _draw():
-	#for i in range(connectorCount):
-	#	if i != 0:
-			#print("let's a draw")
-			#draw_line(placedConnectorsLocations[i-1], placedConnectorsLocations[i], Color.RED, 15.0)
 	for wire in wires:
-		draw_line(placedConnectorsLocations(wire[0]), placedConnectorsLocations(wire[1]), Color.RED, 15.0)
+		draw_line(placedConnectorsLocations[wire[0]], placedConnectorsLocations[wire[1]], Color.RED, 15.0)
 	if connectorCount != 0:
 		draw_line(placedConnectorsLocations[connectorCount - 1], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)

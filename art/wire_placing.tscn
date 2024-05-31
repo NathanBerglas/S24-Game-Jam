@@ -9,7 +9,6 @@
 script = ExtResource("1_xmhnv")
 connection_scene = ExtResource("2_ccgog")
 cursor = NodePath("Cursor")
-cost = null
 
 [node name="Cursor" type="Node2D" parent="."]
 scale = Vector2(0.06, 0.06)
