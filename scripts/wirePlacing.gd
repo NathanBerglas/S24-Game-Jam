@@ -9,6 +9,7 @@ var placedConnectors = []
 var placedConnectorsLocations = []
 var wires: Array = []
 @export var cost = 0
+@export var additionalCost = 0
 
 var line_start: Vector2
 var line_end: Vector2
@@ -24,6 +25,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	cursor.position = get_viewport().get_mouse_position()
+	if (connectorCount >= 2):
+		additionalCost = connectorPrice + get_viewport().get_mouse_position().distance_to(placedConnectorsLocations[connectorCount - 1]) * pricePerPixel
+		for placedConLoc in placedConnectorsLocations:
+			if get_viewport().get_mouse_position().distance_to(placedConLoc) < 100:
+				additionalCost -= connectorPrice
+	print(additionalCost)
 	queue_redraw()
 
 func _input(event):
@@ -47,7 +54,6 @@ func _input(event):
 					cost += connection_instance.position.distance_to(placedConnectorsLocations[connectorCount - 2]) * pricePerPixel
 					wires.append([connectorCount - 2, connectorCount - 1])
 				add_child(connection_instance)
-				print(cost)
 
 func _draw():
 	for wire in wires:
