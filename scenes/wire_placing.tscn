@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d14jqoi3f65of"]
+[gd_scene load_steps=5 format=3 uid="uid://c0gi7111vtn8b"]
 
 [ext_resource type="Script" path="res://scripts/wirePlacing.gd" id="1_1njo6"]
 [ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="2_0da6p"]
@@ -15,9 +15,7 @@ scale = Vector2(0.06, 0.06)
 
 [node name="Outer Circle" type="Sprite2D" parent="Cursor"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-scale = Vector2(1, 1)
 texture = ExtResource("3_3sc1v")
 
 [node name="Inner Circle" type="Sprite2D" parent="Cursor"]
-scale = Vector2(1, 1)
 texture = ExtResource("4_yqd81")
