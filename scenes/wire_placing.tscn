@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0gi7111vtn8b"]
+[gd_scene load_steps=6 format=3 uid="uid://ml872aqpiu0a"]
 
 [ext_resource type="Script" path="res://scripts/wirePlacing.gd" id="1_1njo6"]
 [ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="2_0da6p"]
 [ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="3_3sc1v"]
+[ext_resource type="PackedScene" uid="uid://bou1pw66u264m" path="res://scenes/wire.tscn" id="3_c5m8q"]
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="4_yqd81"]
 
 [node name="Wire Placing" type="Node2D" node_paths=PackedStringArray("cursor")]
 script = ExtResource("1_1njo6")
 connection_scene = ExtResource("2_0da6p")
+wire_scene = ExtResource("3_c5m8q")
 cursor = NodePath("Cursor")
 
 [node name="Cursor" type="Node2D" parent="."]

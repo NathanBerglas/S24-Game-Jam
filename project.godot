@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Bal="*res://scripts/Bal.gd"
 GlobalData="*res://scripts/Global_Data.gd"
 
 [dotnet]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2c25uk6kwqyi"]
+[gd_scene load_steps=5 format=3 uid="uid://2c25uk6kwqyi"]
 
 [ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="1_no3tg"]
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="2_o0oak"]
@@ -6,20 +6,51 @@
 [sub_resource type="GDScript" id="GDScript_tbos6"]
 script/source = "extends Node2D
 
+signal place_wire_begin_signal
+
+@export var hover: Sprite2D
+
+var mouse_hover = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	var wire_placing = get_parent()
+	if wire_placing:
+		wire_placing.connectorDeleted.connect(_on_connectorDeleted)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-		pass
+	hover.visible = mouse_hover and not GlobalData.placing_mode_on
+
+		
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
+	if not GlobalData.placing_mode_on and event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		GlobalData.activeConnector = self.get_meta(\"index\")
+		place_wire_begin_signal.emit()
+
+func _on_connectorDeleted(index):
+	if self.get_meta(\"index\") == index:
+		queue_free()
+	if self.get_meta(\"index\") > index:
+		self.set_meta(\"index\", self.get_meta(\"index\") - 1)
+
+func _on_area_2d_mouse_exited():
+	mouse_hover = false
+	GlobalData.hovering_on = -1
+
+func _on_area_2d_mouse_entered():
+	mouse_hover = true
+	GlobalData.hovering_on = self.get_meta(\"index\")
 "
 
-[node name="Connection" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_002vn"]
+radius = 520.0
+
+[node name="Connection" type="Node2D" node_paths=PackedStringArray("hover")]
 scale = Vector2(0.05, 0.05)
 script = SubResource("GDScript_tbos6")
+hover = NodePath("Hover")
+metadata/index = -1
 
 [node name="Outer Circle" type="Sprite2D" parent="."]
 modulate = Color(0.807843, 0, 0.337255, 1)
@@ -27,3 +58,19 @@ texture = ExtResource("1_no3tg")
 
 [node name="Inner Circle" type="Sprite2D" parent="."]
 texture = ExtResource("2_o0oak")
+
+[node name="Hover" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0.184314)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_no3tg")
+offset = Vector2(1.5, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_002vn")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
