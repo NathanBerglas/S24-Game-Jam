@@ -10,7 +10,11 @@ func new_bal():
 	
 	pass
 
-
+func push_cost():
+	money-= cur_cost
+	cur_cost = 0
+	push_now = false
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

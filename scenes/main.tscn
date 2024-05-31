@@ -1,13 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1id21d2oy7wc"]
 
-[ext_resource type="PackedScene" uid="uid://c7ufmfmfci0b6" path="res://scenes/shop_menu.tscn" id="1_8q3yr"]
-[ext_resource type="PackedScene" uid="uid://c0gi7111vtn8b" path="res://scenes/wire_placing.tscn" id="2_jsbet"]
+[ext_resource type="PackedScene" uid="uid://dfoagigh6nxs7" path="res://scenes/shop_menu.tscn" id="1_y8rx1"]
+[ext_resource type="PackedScene" uid="uid://d14jqoi3f65of" path="res://scenes/wire_placing.tscn" id="2_nrpv1"]
 
 [node name="Main" type="Node2D"]
-scale = Vector2(2, 2)
 
-[node name="Wire Placing" parent="." instance=ExtResource("2_jsbet")]
-scale = Vector2(0.5, 0.5)
+[node name="Shop Menu" parent="." instance=ExtResource("1_y8rx1")]
+position = Vector2(4, -5)
 
-[node name="Shop Menu" parent="Wire Placing" instance=ExtResource("1_8q3yr")]
-scale = Vector2(0.7, 0.7)
+[node name="Wire Placing" parent="." instance=ExtResource("2_nrpv1")]
