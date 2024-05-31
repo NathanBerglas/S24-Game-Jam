@@ -22,30 +22,43 @@ var do_draw_line = false
 var connectorPrice = 1000
 var pricePerPixel = 1
 
-# Called when the node enters the scene tree for the first time.
+@export var enabled = false
+
+	# Called when the node enters the scene tree for the first time.
 func _ready():
-	var preexisting = get_tree().get_nodes_in_group("Connection")
+	cursor.set_meta("connectionColour", self.get_meta("Colour"))
+	var preexisting = get_tree().get_nodes_in_group(self.get_meta("Target"))
 	for pCon in preexisting:
 		placedConnectors.append(pCon)
 		placedConnectorsLocations.append(pCon.position)
+		pCon.set_meta("index", connectorCount)
+		pCon.place_wire_begin_signal.connect(place_wire_begin)
 		connectorCount += 1
 	#place_wire_begin()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if not enabled:
+		return
 	if GlobalData.placing_mode_on:
 		placing_wire()
 	queue_redraw()
 
 func place_wire_begin():
+	if not enabled:
+		return
 	GlobalData.placing_mode_on = true
 	cursor.visible = true
 	
 func place_wire_end():
+	if not enabled:
+		return
 	GlobalData.placing_mode_on = false
 	cursor.visible = false
 
 func placing_wire():
+	if not enabled:
+		return
 	cursor.position = get_viewport().get_mouse_position()
 	if (connectorCount >= 2):
 		additionalCost = connectorPrice + get_viewport().get_mouse_position().distance_to(placedConnectorsLocations[GlobalData.activeConnector]) * pricePerPixel
@@ -57,6 +70,8 @@ func placing_wire():
 		GlobalData.cur_cost = floor(additionalCost)
 
 func _input(event):
+	if not enabled:
+		return
 	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var index = 0
 		var skip = false
@@ -83,6 +98,8 @@ func _input(event):
 		if not skip:
 			var connection_instance = connection_scene.instantiate()
 			connection_instance.set_meta("index", connectorCount)
+			connection_instance.set_meta("Type", self.get_meta("Type"))
+			connection_instance.set_meta("connectionColour", self.get_meta("Colour"))
 			connection_instance.set_meta("fromPlacer_canBeDeleted", true)
 			connection_instance.place_wire_begin_signal.connect(place_wire_begin)
 			connection_instance.position = get_viewport().get_mouse_position()
@@ -106,6 +123,8 @@ func _input(event):
 			GlobalData.activeConnector = connectorCount - 1
 			GlobalData.push_now = true
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		place_wire_end()
+	elif GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		place_wire_end()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_P:
 		place_wire_begin()
@@ -144,10 +163,14 @@ func _input(event):
 			connectorDeleted.emit(GlobalData.hovering_on)
 
 func _draw():
+	if not enabled:
+		return
 	if connectorCount != 0 and GlobalData.placing_mode_on and GlobalData.activeConnector != -1:
 		draw_line(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)
 
 func on_wire_deleted(start_index, end_index):
+	if not enabled:
+		return
 	var windex = 0
 	for wire in wires:
 		if wire[0] == start_index and wire[1] == end_index:
@@ -155,3 +178,7 @@ func on_wire_deleted(start_index, end_index):
 			break
 		windex += 1	
 		
+ 
+
+#func _on_visibility_changed():
+#	enabled = not enabled
