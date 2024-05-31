@@ -40,6 +40,44 @@ namespace CSharpTutorials
 {
     class Program
     {
+        // utilies[i] gives the start-end pair of the ith utility as a Line
+        // connections[i] gives all the line connections associated with the ith utility as a List<Line>
+        static bool doesItWork(List<Line> utilities, List<List<Line>> connections) 
+        {
+            // look through each connection
+            // see if any of its lines intersect with the lines of all connections after it
+            for (int i = 0; i < connections.Count; i++) {
+                for (int j = i + 1; j < connections.Count; j++) {
+                    foreach (Line line_i in connections[i]) {
+                        foreach (Line line_j in connections[j]) {
+                            if (doIntersect(line_i, line_j)) {
+                                // Console.Write(i + " ");
+                                // Console.WriteLine(line_i.ToString());
+                                // Console.Write(j + " ");
+                                // Console.WriteLine(line_j.ToString());
+                                Console.WriteLine("crossed");
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // now see if the utilities connect up
+            for (int i = 0; i < utilities.Count; i++) {
+                // give each line a version of itself that goes backwards too
+                int connection_size = connections[i].Count;
+                for (int j = 0; j < connection_size; j++) {
+                    connections[i].Add(new Line(connections[i][j].Point2, connections[i][j].Point1));
+                }
+                if (!doesUtilityConnectionWork(utilities[i].Point1, utilities[i].Point2, connections[i])) {
+                    Console.WriteLine("not connected at: " + i.ToString());
+                    return false;
+                }
+            }
+
+            return true;
+        }
         // Given three collinear points p, q, r, the function checks if 
         // point q lies on line segment 'pr' 
         static Boolean onSegment(Point p, Point q, Point r) 
@@ -129,46 +167,8 @@ namespace CSharpTutorials
             return works;
         }
 
-        static bool doesItWork(List<Line> utilities, List<List<Line>> connections) 
-        {
-            // look through each connection
-            // see if any of its lines intersect with the lines of all connections after it
-            for (int i = 0; i < connections.Count; i++) {
-                for (int j = i + 1; j < connections.Count; j++) {
-                    foreach (Line line_i in connections[i]) {
-                        foreach (Line line_j in connections[j]) {
-                            if (doIntersect(line_i, line_j)) {
-                                // Console.Write(i + " ");
-                                // Console.WriteLine(line_i.ToString());
-                                // Console.Write(j + " ");
-                                // Console.WriteLine(line_j.ToString());
-                                Console.WriteLine("crossed");
-                                return false;
-                            }
-                        }
-                    }
-                }
-            }
-
-            // now see if the utilities connect up
-            for (int i = 0; i < utilities.Count; i++) {
-                // give each line a version of itself that goes backwards too
-                int connection_size = connections[i].Count;
-                for (int j = 0; j < connection_size; j++) {
-                    connections[i].Add(new Line(connections[i][j].Point2, connections[i][j].Point1));
-                }
-                if (!doesUtilityConnectionWork(utilities[i].Point1, utilities[i].Point2, connections[i])) {
-                    Console.WriteLine("not connected at: " + i.ToString());
-                    return false;
-                }
-            }
-
-            return true;
-        }
         // static void Main()
         // {
-        //     // utilies[i] gives the start end pair of the ith utility 
-        //     // connections[i] gives all the line connections associated with the ith utility 
             
         //     List<Line> utilities = new List<Line>();
         //     utilities.Add(new Line(new Point(1, 1), new Point(3, 5)));
