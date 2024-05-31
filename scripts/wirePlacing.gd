@@ -33,7 +33,7 @@ func _process(delta):
 			if get_viewport().get_mouse_position().distance_to(placedConLoc) < 50:
 				additionalCost -= connectorPrice
 				cursor.position = placedConLoc
-	print(additionalCost)
+	Bal.cur_cost = additionalCost
 	queue_redraw()
 
 func _input(event):
@@ -58,6 +58,7 @@ func _input(event):
 					wires.append([connectorCount - 2, connectorCount - 1])
 				add_child(connection_instance)
 				activeConnector = connectorCount - 1
+				Bal.push_now = true
 
 func _draw():
 	for wire in wires:
