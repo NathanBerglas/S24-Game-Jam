@@ -192,7 +192,7 @@ func _draw():
 
 func on_wire_deleted(start_index, end_index, type): # wire is specified ans start_index -> end_index
 	if not enabled or type != self.get_meta("Type"):
-		print("not my type!: ", self.get_meta("Type"))
+		print("not my type!: ", self.get_meta("Type"), " it should be this type: ", type, " or if not this is my enabled status: ", enabled)
 		return
 	var windex = 0 # enumerates wires
 	for wire in wires:
