@@ -13,3 +13,4 @@ position = Vector2(4, -5)
 position = Vector2(601, 347)
 
 [node name="Wire Placing" parent="." instance=ExtResource("2_nrpv1")]
+position = Vector2(11, 1)

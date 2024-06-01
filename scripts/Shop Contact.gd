@@ -1,4 +1,4 @@
-extends Button
+extends ColorRect
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,7 @@ func _process(delta):
 	pass
 
 
-func _on_pressed():
-	GlobalData.item = 3
+func _on_mouse_entered():
+	GlobalData.placing_mode_on = false
+	pass # Replace with function body.
+

@@ -33,7 +33,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if GlobalData.placing_mode_on:
+	if GlobalData.placing_mode_on and GlobalData.item == 1:
 		placing_wire()
 	queue_redraw()
 
@@ -107,7 +107,7 @@ func _input(event):
 			GlobalData.push_now = true
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		place_wire_end()
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_P:
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_P and GlobalData.item == 1:
 		place_wire_begin()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_W:
 		print(wires)
@@ -155,3 +155,9 @@ func on_wire_deleted(start_index, end_index):
 			break
 		windex += 1	
 		
+
+
+
+func _on_shop_zone_mouse_entered():
+	GlobalData.placing_mode_on = false
+	cursor.visible = false

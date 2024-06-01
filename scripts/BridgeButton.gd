@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_pressed():
-	GlobalData.item = 3
+	GlobalData.item = 2
+	print("2")
