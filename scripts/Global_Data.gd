@@ -41,8 +41,17 @@ func intersect (start, end, lines):
 		#the start and end are stored as positions of nodes
 		#so you should be able to use start.x and start.y to access these values
 		#i've got a tab open that should have a simple formula I'll do it some time in the morning
-		pass
+		var orient1 = orientation(start, end, lines[n])
+		var orient2 = orientation(start, end, lines[n+1])
+		var orient3 = orientation(lines[n], lines[n+1], start)
+		var orient4 = orientation(lines[n], lines[n+1], end)
+		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
+		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
+			return true
+		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
+			return true
 
-
+func orientation (p1, p2, p3):
+	return (p2.y - p1.y) * (p3.x - p2.x) - (p3.y - p2.y) * (p2.x - p1.x)
 
 
