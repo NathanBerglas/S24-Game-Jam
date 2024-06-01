@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="3_lwnty"]
 [ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="3_q112i"]
 [ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="5_ai2nv"]
-[ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/Don't Fret - Quincas Moreira.mp3" id="6_fea7m"]
+[ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/backgroundMusic.mp3" id="6_fea7m"]
 [ext_resource type="PackedScene" path="res://scenes/bridgePlacing.tscn" id="6_ikjtv"]
 
 [node name="Main" type="Node2D"]

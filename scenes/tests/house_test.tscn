@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c1u3e0ycih7tt" path="res://scenes/House Prefabs/Green_House.tscn" id="8_gusfi"]
 [ext_resource type="PackedScene" uid="uid://ck5kwx2jhrpal" path="res://scenes/House Prefabs/Green-Red_House.tscn" id="8_lecxb"]
 [ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="11_nimad"]
-[ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/Don't Fret - Quincas Moreira.mp3" id="12_er3hc"]
+[ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/backgroundMusic.mp3" id="12_er3hc"]
 
 [node name="House Test" type="Node2D"]
 
