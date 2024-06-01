@@ -26,5 +26,8 @@ metadata/Type = "Green"
 metadata/Colour = Color(0, 0.521569, 0.364706, 1)
 
 [connection signal="connectorCreated" from="Wire PlacingBlue" to="." method="on_connection_created"]
+[connection signal="wireCreated" from="Wire PlacingBlue" to="." method="on_connection_created"]
 [connection signal="connectorCreated" from="Wire PlacingRed" to="." method="on_connection_created"]
+[connection signal="wireCreated" from="Wire PlacingRed" to="." method="on_connection_created"]
 [connection signal="connectorCreated" from="Wire PlacingGreen" to="." method="on_connection_created"]
+[connection signal="wireCreated" from="Wire PlacingGreen" to="." method="on_connection_created"]

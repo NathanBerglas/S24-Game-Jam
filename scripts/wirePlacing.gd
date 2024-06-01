@@ -15,7 +15,9 @@ var wires: Array = [] # stores wires as index -> inedx pairs, ie. [[0, 1], [1, 2
 
 signal connectorDeleted
 signal connectorCreated
+signal connection_wireDeleted # To wire when a connection is removed
 signal wireDeleted
+signal wireCreated
 
 var line_start: Vector2
 var line_end: Vector2
@@ -93,6 +95,7 @@ func _input(event):
 						wire_instance.start_point = placedConnectorsLocations[wire_instance.start_index]
 						wire_instance.end_point = placedConnectorsLocations[wire_instance.end_index]
 						add_child(wire_instance) # Creats wire instance, data is set above
+						wireCreated.emit(wire_instance) # Connects to connector_control telling to sort and connect to the new wire
 						GlobalData.wire_coords.append(wire_instance.start_point) # adds wire to global data
 						GlobalData.wire_coords.append(wire_instance.end_point) 
 						GlobalData.push_cost() # Finalizes wire cost
@@ -123,19 +126,20 @@ func _input(event):
 				wire_instance.start_point = placedConnectorsLocations[wire_instance.start_index]
 				wire_instance.end_point = placedConnectorsLocations[wire_instance.end_index]
 				add_child(wire_instance)
+				wireCreated.emit(wire_instance)
 				GlobalData.wire_coords.append(wire_instance.start_point)
 				GlobalData.wire_coords.append(wire_instance.end_point)
 				GlobalData.push_cost()
 				wire_instance.wire_deleted.connect(on_wire_deleted)
 			add_child(connection_instance) # Instantate connector now that wire is done
-			connectorCreated.emit(connection_instance) # IDK, I think this connects to nothing but I'm 50% sure deletion breaks if I remove this line
+			connectorCreated.emit(connection_instance) # Connects to connector_control telling to sort and connect to the new connector
 			GlobalData.activeConnector = connectorCount - 1 # Sets new active connector the new connector
 			GlobalData.push_now = true
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE: # Stops wire placing
 		place_wire_end()
 	elif GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.pressed: # same as escape
 		place_wire_end()
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_P and GlobalData.item == 1: # Shorcut. Designed for dev use, but may be implemented for player
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_P: # and GlobalData.item == 1: # Shorcut. Designed for dev use, but may be implemented for player
 		place_wire_begin()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_W: # Dev tool for showing wires script-side
 		print(wires)
@@ -171,7 +175,7 @@ func deleteConnection():
 			wire[1] -= 1
 		windex += 1
 		print("New wire: ", wire)
-	wireDeleted.emit(GlobalData.hovering_on) # Tells wire that it should delete itself. This is the node-side wire (called wireside), not script-side wire in the array (that has been previously deleted)
+	connection_wireDeleted.emit(GlobalData.hovering_on) # Tells wire that it should delete itself. This is the node-side wire (called wireside), not script-side wire in the array (that has been previously deleted)
 	if GlobalData.activeConnector == GlobalData.hovering_on: # If the player just deleted the active connector, then change to the most recently placed connector
 		GlobalData.activeConnector = connectorCount - 1
 	elif GlobalData.activeConnector > GlobalData.hovering_on: # Readjust index
@@ -186,13 +190,15 @@ func _draw():
 	if connectorCount != 0 and GlobalData.placing_mode_on and GlobalData.activeConnector != -1: # Draw the line from active connector to mouse, showing where wire will be placed
 		draw_line(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)
 
-func on_wire_deleted(start_index, end_index): # wire is specified ans start_index -> end_index
-	if not enabled:
+func on_wire_deleted(start_index, end_index, type): # wire is specified ans start_index -> end_index
+	if not enabled or type != self.get_meta("Type"):
+		print("not my type!: ", self.get_meta("Type"))
 		return
 	var windex = 0 # enumerates wires
-	for wire in wires: 
+	for wire in wires:
 		if wire[0] == start_index and wire[1] == end_index: # if current wires is the one to be deleted
 			wires.remove_at(windex)
+			wireDeleted.emit(start_index, end_index, type)
 			break
 		windex += 1
 

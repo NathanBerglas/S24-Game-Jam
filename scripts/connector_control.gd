@@ -39,11 +39,10 @@ func on_green_enable():
 	WPRed.enabled = false
 	WPGreen.enabled = true
 	
-func on_connection_created(connectionNode): # Sorts each connection, and connects their on_colour_enable signal to the proper function
-	if connectionNode.get_meta("Type") == "Blue":
-		connectionNode.enable_blue.connect(on_blue_enable)
-	elif connectionNode.get_meta("Type") == "Red":
-		connectionNode.enable_red.connect(on_red_enable)
-	elif connectionNode.get_meta("Type") == "Green":
-		connectionNode.enable_green.connect(on_green_enable)
-	
+func on_connection_created(typeNode): # Sorts each node, and connects their on_colour_enable signal to the proper function
+	if typeNode.get_meta("Type") == "Blue":
+		typeNode.enable_blue.connect(on_blue_enable)
+	elif typeNode.get_meta("Type") == "Red":
+		typeNode.enable_red.connect(on_red_enable)
+	elif typeNode.get_meta("Type") == "Green":
+		typeNode.enable_green.connect(on_green_enable)
