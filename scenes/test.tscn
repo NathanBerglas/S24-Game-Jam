@@ -6,7 +6,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Connection" parent="." groups=["ConnectionRed"] instance=ExtResource("2_6kosr")]
-position = Vector2(620, 437)
+position = Vector2(570, 433)
 metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
 metadata/Type = "Red"
 
@@ -21,3 +21,8 @@ metadata/connectionColour = Color(0, 0.521569, 0.364706, 1)
 metadata/Type = "Green"
 
 [node name="ConnectorControl" parent="." instance=ExtResource("2_gpugw")]
+
+[node name="Connection4" parent="." groups=["ConnectionBlue"] instance=ExtResource("2_6kosr")]
+position = Vector2(275, 499)
+metadata/connectionColour = Color(0.392157, 0.258824, 1, 1)
+metadata/Type = "Blue"

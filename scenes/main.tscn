@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1id21d2oy7wc"]
 
 [ext_resource type="PackedScene" uid="uid://dfoagigh6nxs7" path="res://scenes/shop_menu.tscn" id="1_y8rx1"]
-[ext_resource type="PackedScene" uid="uid://ml872aqpiu0a" path="res://scenes/wire_placing.tscn" id="2_nrpv1"]
-[ext_resource type="PackedScene" uid="uid://bj7qidd5elne4" path="res://scenes/house.tscn" id="3_cg01j"]
+[ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="3_lwnty"]
+[ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="3_q112i"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Shop Menu" parent="." instance=ExtResource("1_y8rx1")]
 position = Vector2(4, -5)
 
-[node name="House" parent="." instance=ExtResource("3_cg01j")]
-position = Vector2(601, 347)
+[node name="ConnectorControl" parent="." instance=ExtResource("3_lwnty")]
 
-[node name="Wire Placing" parent="." instance=ExtResource("2_nrpv1")]
-position = Vector2(11, 1)
+[node name="Connection" parent="." groups=["ConnectionRed"] instance=ExtResource("3_q112i")]
+position = Vector2(633, 349)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"

@@ -25,13 +25,17 @@ texture = ExtResource("3_5a71s")
 modulate = Color(0, 0, 1, 1)
 texture = ExtResource("4_ilk55")
 
-[node name="First Connection" parent="." instance=ExtResource("5_pbi10")]
+[node name="First Connection" parent="." groups=["ConnectionRed"] instance=ExtResource("5_pbi10")]
 position = Vector2(-1, -45)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"
 
-[node name="Second Connection" parent="." instance=ExtResource("5_pbi10")]
+[node name="Second Connection" parent="." groups=["ConnectionGreen"] instance=ExtResource("5_pbi10")]
 position = Vector2(44, 40)
 metadata/connectionColour = Color(0.207843, 0.513726, 0.243137, 1)
+metadata/Type = "Green"
 
-[node name="Third Connection" parent="." instance=ExtResource("5_pbi10")]
+[node name="Third Connection" parent="." groups=["ConnectionBlue"] instance=ExtResource("5_pbi10")]
 position = Vector2(-36, 39)
 metadata/connectionColour = Color(0.427451, 0.25098, 0.980392, 1)
+metadata/Type = "Blue"

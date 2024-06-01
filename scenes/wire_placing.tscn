@@ -42,6 +42,6 @@ offset_right = 430.0
 offset_bottom = 257.0
 color = Color(1, 1, 1, 0)
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="Shop Zone" to="." method="_on_shop_zone_mouse_entered"]
 [connection signal="mouse_entered" from="Shop Zone2" to="." method="_on_shop_zone_mouse_entered"]
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
