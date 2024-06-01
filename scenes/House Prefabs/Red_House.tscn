@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c36i4g6t2cque"]
+
+[ext_resource type="Texture2D" uid="uid://ckcd0h2i7lftc" path="res://art/HouseOutline.png" id="1_kuetd"]
+[ext_resource type="Texture2D" uid="uid://bxf1ahjq018d6" path="res://art/HouseFullInner.png" id="2_djya3"]
+[ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="3_456l4"]
+
+[node name="Red_House" type="Node2D"]
+
+[node name="Outline" type="Sprite2D" parent="."]
+top_level = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kuetd")
+
+[node name="Inner" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+top_level = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_djya3")
+
+[node name="Connection" parent="." groups=["ConnectionRed"] instance=ExtResource("3_456l4")]
+position = Vector2(0, -45)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"
+
+[node name="Connection2" parent="." groups=["ConnectionRed"] instance=ExtResource("3_456l4")]
+position = Vector2(45, 45)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"
+
+[node name="Connection3" parent="." groups=["ConnectionRed"] instance=ExtResource("3_456l4")]
+position = Vector2(-45, 45)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"

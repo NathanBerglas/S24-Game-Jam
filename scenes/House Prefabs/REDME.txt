@@ -1,0 +1,9 @@
+Ok, so this is how the house prefabs work
+Basically you just make clones, arrange them, and then place in a connector_control, which does all of the multi colour wire buisness
+If these prefabs are not how you like, or you wish another combinations, you can duplicate them and make sure to change the following, incredibly important things
+- Change the inner colour (not technically important)
+- For each connection, change metadata so colour is the correct colour (not technically important)
+- For each connection, change metadata so Type is either 'Red', 'Green', or 'Blue' (important)
+- For each connectino, change group so it has 1 of group 'ConnectionRed', 'ConnectionGreen', or 'ConnectionBlue', also, make sure it has standard group 'coonnection' (all important)
+There you go, another house prefab! If you want another building other than a house, all that's neccesary is sprite editing, none of it has any bearing on the tech
+The only thing the game interacts with in these prefabs is the connections, so as long as the meta data and groups are set correctly, all will work
