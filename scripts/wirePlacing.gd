@@ -6,6 +6,9 @@ extends Node2D
 @export var cursor: Node2D
 @export var cursorOuterCircle: Sprite2D
 
+@export var PlaceSound: AudioStreamPlayer
+@export var DeleteSound: AudioStreamPlayer
+
 var connectorCount = 0 # Counts the # of connectors. Creates incredibly disastrous bugs when not correct
 var placedConnectors = [] # Stores instances
 var placedConnectorsLocations = [] # Stores positions
@@ -98,6 +101,7 @@ func _input(event):
 						wire_instance.start_point = placedConnectorsLocations[wire_instance.start_index]
 						wire_instance.end_point = placedConnectorsLocations[wire_instance.end_index]
 						add_child(wire_instance) # Creats wire instance, data is set above
+						PlaceSound.play(0.0)
 						wireCreated.emit(wire_instance) # Connects to connector_control telling to sort and connect to the new wire
 						GlobalData.wire_coords.append(wire_instance.start_point) # adds wire to global data
 						GlobalData.wire_coords.append(wire_instance.end_point) 
@@ -128,13 +132,15 @@ func _input(event):
 				wire_instance.end_index = wires[wires.size() - 1][1]
 				wire_instance.start_point = placedConnectorsLocations[wire_instance.start_index]
 				wire_instance.end_point = placedConnectorsLocations[wire_instance.end_index]
-				add_child(wire_instance)
+				PlaceSound.play(0.0)
 				wireCreated.emit(wire_instance)
 				GlobalData.wire_coords.append(wire_instance.start_point)
 				GlobalData.wire_coords.append(wire_instance.end_point)
 				GlobalData.push_cost()
 				wire_instance.wire_deleted.connect(on_wire_deleted)
+				add_child(wire_instance) # Instantate connector now that wire is done
 			add_child(connection_instance) # Instantate connector now that wire is done
+			PlaceSound.play(0.0)
 			connectorCreated.emit(connection_instance) # Connects to connector_control telling to sort and connect to the new connector
 			GlobalData.activeConnector = connectorCount - 1 # Sets new active connector the new connector
 			GlobalData.push_now = true
@@ -186,6 +192,7 @@ func deleteConnection():
 	placedConnectorsLocations.pop_at(GlobalData.hovering_on) # removed from array
 	placedConnectors.pop_at(GlobalData.hovering_on)
 	connectorDeleted.emit(GlobalData.hovering_on) # Tell all the connectors a connector is to be deleted
+	DeleteSound.play(0.0)
 			
 func _draw():
 	if not enabled:
@@ -202,6 +209,7 @@ func on_wire_deleted(start_index, end_index, type): # wire is specified ans star
 		if wire[0] == start_index and wire[1] == end_index: # if current wires is the one to be deleted
 			wires.remove_at(windex)
 			wireDeleted.emit(start_index, end_index, type)
+			DeleteSound.play(0.0)
 			break
 		windex += 1
 
