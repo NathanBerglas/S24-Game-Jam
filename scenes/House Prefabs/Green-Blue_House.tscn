@@ -21,14 +21,14 @@ modulate = Color(0.427451, 0.25098, 0.980392, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_af4wu")
 
-[node name="ConnectionLeft" parent="." groups=["ConnectionRed"] instance=ExtResource("4_hdpn5")]
+[node name="ConnectionLeft" parent="." groups=["ConnectionGreen"] instance=ExtResource("4_hdpn5")]
 z_index = -1
 position = Vector2(-45, 45)
-metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
-metadata/Type = "Red"
-
-[node name="ConnectionRight" parent="." groups=["ConnectionGreen"] instance=ExtResource("4_hdpn5")]
-z_index = -1
-position = Vector2(45, 45)
 metadata/connectionColour = Color(0, 0.521569, 0.364706, 1)
 metadata/Type = "Green"
+
+[node name="ConnectionRight" parent="." groups=["ConnectionBlue"] instance=ExtResource("4_hdpn5")]
+z_index = -1
+position = Vector2(45, 45)
+metadata/connectionColour = Color(0.427451, 0.25098, 0.980392, 1)
+metadata/Type = "Blue"

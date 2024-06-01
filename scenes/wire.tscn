@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://scripts/Wire.gd" id="1_3wuyu"]
 
 [node name="Wire" type="Node2D" node_paths=PackedStringArray("myArea")]
+editor_description = "Wire scene, it is instantiated during runtime by a wire_placing node. It's life cycle is to create a dynamic collision box, then check if it is right clicked on, if so, it deletes itself."
+z_index = -1
 script = ExtResource("1_3wuyu")
 myArea = NodePath("Area2D")
 metadata/Type = "Black"

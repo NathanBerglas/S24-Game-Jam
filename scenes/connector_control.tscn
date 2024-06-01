@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ml872aqpiu0a" path="res://scenes/wire_placing.tscn" id="1_ta431"]
 
 [node name="ConnectorControl" type="Node2D" node_paths=PackedStringArray("WPBlue", "WPRed", "WPGreen")]
+editor_description = "The master control that deals with different colours. It enables and disables wire placers, that's it."
 script = ExtResource("1_1j28k")
 WPBlue = NodePath("Wire PlacingBlue")
 WPRed = NodePath("Wire PlacingRed")

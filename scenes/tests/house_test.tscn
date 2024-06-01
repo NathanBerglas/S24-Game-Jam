@@ -1,41 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://dksbkpi86t6oa"]
+[gd_scene load_steps=11 format=3 uid="uid://dksbkpi86t6oa"]
 
 [ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="1_qssri"]
 [ext_resource type="PackedScene" uid="uid://bj7qidd5elne4" path="res://scenes/House Prefabs/Green-Red-Blue_house.tscn" id="2_4dqhf"]
 [ext_resource type="PackedScene" uid="uid://dotuqbi18uosr" path="res://scenes/House Prefabs/Blue-Green_House.tscn" id="3_1s1xt"]
+[ext_resource type="PackedScene" uid="uid://b84tfxuxxedtj" path="res://scenes/House Prefabs/Blue-Red_House.tscn" id="3_gyacw"]
 [ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="4_qfiyo"]
 [ext_resource type="PackedScene" uid="uid://b6tq6la3qakb" path="res://scenes/House Prefabs/Red-Blue_House.tscn" id="5_wns61"]
 [ext_resource type="PackedScene" uid="uid://c36i4g6t2cque" path="res://scenes/House Prefabs/Red_House.tscn" id="6_k3cck"]
 [ext_resource type="PackedScene" uid="uid://b7y0v2w6q3dku" path="res://scenes/House Prefabs/Green-Blue_House.tscn" id="7_fp4cg"]
+[ext_resource type="PackedScene" uid="uid://c1u3e0ycih7tt" path="res://scenes/House Prefabs/Green_House.tscn" id="8_gusfi"]
 [ext_resource type="PackedScene" uid="uid://ck5kwx2jhrpal" path="res://scenes/House Prefabs/Green-Red_House.tscn" id="8_lecxb"]
 
 [node name="House Test" type="Node2D"]
 
 [node name="ConnectorControl" parent="." instance=ExtResource("1_qssri")]
 
-[node name="House" parent="." instance=ExtResource("2_4dqhf")]
-position = Vector2(123, 555)
-
-[node name="House2" parent="." instance=ExtResource("2_4dqhf")]
-position = Vector2(494, 430)
-
-[node name="House3" parent="." instance=ExtResource("2_4dqhf")]
-position = Vector2(818, 163)
-
 [node name="Blue-Red_House" parent="." instance=ExtResource("3_1s1xt")]
-position = Vector2(128, 81)
+position = Vector2(189, 167)
+
+[node name="Blue-Red_House2" parent="." instance=ExtResource("3_gyacw")]
+position = Vector2(327, 867)
 
 [node name="Blue_House" parent="." instance=ExtResource("4_qfiyo")]
-position = Vector2(212, 241)
-
-[node name="Red-Blue_House" parent="." instance=ExtResource("5_wns61")]
-position = Vector2(1009, 497)
-
-[node name="Red_House" parent="." instance=ExtResource("6_k3cck")]
-position = Vector2(692, 574)
+position = Vector2(453, 456)
 
 [node name="Green-Blue_House" parent="." instance=ExtResource("7_fp4cg")]
-position = Vector2(461, 74)
+position = Vector2(961, 194)
+
+[node name="Green-Red-Blue_House" parent="." instance=ExtResource("2_4dqhf")]
+position = Vector2(862, 799)
 
 [node name="Grren-Red_House" parent="." instance=ExtResource("8_lecxb")]
-position = Vector2(1042, 111)
+position = Vector2(1140, 542)
+
+[node name="Green_House" parent="." instance=ExtResource("8_gusfi")]
+position = Vector2(1254, 307)
+
+[node name="Red-Blue_House" parent="." instance=ExtResource("5_wns61")]
+position = Vector2(1316, 851)
+
+[node name="Red_House" parent="." instance=ExtResource("6_k3cck")]
+position = Vector2(1627, 520)

@@ -4,20 +4,24 @@ extends Node2D
 @export var WPRed: Node2D
 @export var WPGreen: Node2D
 
+## Because it was really late and I spent way to long thinking about how to do multiple colours, this is the best I could come up with
+## This is a master controller of the three wire colours, and works by enabling and disabling specific colours when needed
+## The default is black, and means no colour selected
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	WPBlue.enabled = false
+	WPBlue.enabled = false # starts with each disabled
 	WPRed.enabled = false
 	WPGreen.enabled = false
-	var existing_connections = get_tree().get_nodes_in_group("Connection")
+	var existing_connections = get_tree().get_nodes_in_group("Connection") # Goes through each editor connection
 	for con in existing_connections:
-		on_connection_created(con)
+		on_connection_created(con) # Proccess each connection
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func on_blue_enable():
+func on_blue_enable(): # Sends a silly message and enables only that colour
 	print("Let's blue!")
 	WPBlue.enabled = true
 	WPRed.enabled = false
@@ -30,12 +34,12 @@ func on_red_enable():
 	WPGreen.enabled = false
 
 func on_green_enable():
-	print("green.")
+	print("green.") # my favorite
 	WPBlue.enabled = false
 	WPRed.enabled = false
 	WPGreen.enabled = true
 	
-func on_connection_created(connectionNode):
+func on_connection_created(connectionNode): # Sorts each connection, and connects their on_colour_enable signal to the proper function
 	if connectionNode.get_meta("Type") == "Blue":
 		connectionNode.enable_blue.connect(on_blue_enable)
 	elif connectionNode.get_meta("Type") == "Red":

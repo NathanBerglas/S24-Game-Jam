@@ -8,6 +8,7 @@ script/source = "extends Node2D
 
 signal place_wire_begin_signal
 
+# For connector control
 signal enable_red
 signal enable_green
 signal enable_blue
@@ -20,46 +21,49 @@ var mouse_hover = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var wire_placing = get_parent()
-	if wire_placing.is_in_group(\"wire_placing_g\") and self.get_meta(\"fromPlacer_canBeDeleted\"):
-		wire_placing.connectorDeleted.connect(_on_connectorDeleted)
-	if wire_placing.is_in_group(\"wire_placing_g\"):
+	if wire_placing.is_in_group(\"wire_placing_g\") and self.get_meta(\"fromPlacer_canBeDeleted\"): # If this connection can be deleted, and was placed by a wire_placer (same thing really)
+		wire_placing.connectorDeleted.connect(_on_connectorDeleted) # Connects deletion signal
+	if wire_placing.is_in_group(\"wire_placing_g\"): # Distinction in meta data only for testing. In practice, it will trigger iff above does
 		outerCircle.modulate = wire_placing.get_meta(\"Colour\")
 		print(\"taking from wire placer\")
-	else:
+	else: # Triggers if it's an editor placed connection, in which it gets its colour from it's own metadata set by author
 		outerCircle.modulate = self.get_meta(\"connectionColour\")
 		print(\"getting my own\")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	hover.visible = mouse_hover and not GlobalData.placing_mode_on
+	hover.visible = mouse_hover and not GlobalData.placing_mode_on # Checks hover
 
-func _on_area_2d_input_event(_viewport, event, _shape_idx):
-	if not GlobalData.placing_mode_on and event is InputEventMouseButton and event.pressed:
+func _on_area_2d_input_event(_viewport, event, _shape_idx): # When the connection is clicked on. Annoyingly run after _input() base function
+	if not GlobalData.placing_mode_on and event is InputEventMouseButton and event.pressed: # if it is clicked on
+		## When it is clicked on, because these are not enabled and disabled by the connector_control, the game does not know if this is the current active colour
+		## Because of that, whenever the player interacts with a node, detected in this code, it must send a signal telling the connector controller to engage this control
+		## This happens secondary to the actual action, meaning that if a connection is clicked without its colour being active, that action is blocked. If possible, I, Nate will fix
 		print(\"Adjusting focus\")
 		if self.get_meta(\"Type\") == \"Red\":
-			print(\"Let's lay some red\")
-			enable_red.emit()
+			print(\"Let's lay some red\") # These are non-negotiable and stay in the final code
+			enable_red.emit() # See connector_controller for what these signals do. They simply engage each colour and disable the rest
 		elif self.get_meta(\"Type\") == \"Green\":
 			print(\"I'm a green machine!\")
 			enable_green.emit()
 		elif self.get_meta(\"Type\") == \"Blue\":
 			print(\"Blue for you!\")
 			enable_blue.emit()
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			GlobalData.activeConnector = self.get_meta(\"index\")
-			place_wire_begin_signal.emit()
+		if event.button_index == MOUSE_BUTTON_LEFT: # if it is left clicked, importantly done after switching to correct colour
+			GlobalData.activeConnector = self.get_meta(\"index\") # Tells the wire_placer that this node is the active one that wants to lay wire
+			place_wire_begin_signal.emit() # Emits signal telling wire_placer that the mode should switch and we should begin to place wire
 
-func _on_connectorDeleted(index):
-	if not get_parent().enabled:
+func _on_connectorDeleted(index): # When any connector is deleted, not this specific one!
+	if not get_parent().enabled: # If this colour is not enabled, do not delete itself! Very important to avoid what I call 'godot heap overflow'
 		return
-	if self.get_meta(\"index\") == index:
-		GlobalData.hovering_on = -1
-		GlobalData.hovering_type = \"Black\"
-		queue_free()
-	if self.get_meta(\"index\") > index:
-		self.set_meta(\"index\", self.get_meta(\"index\") - 1)
+	if self.get_meta(\"index\") == index: # if this is the connector ordered to be deleted
+		GlobalData.hovering_on = -1 # Stop selecting this node
+		GlobalData.hovering_type = \"Black\" # The type the player is trying to select goes to the default black
+		queue_free() # byeee
+	if self.get_meta(\"index\") > index: 
+		self.set_meta(\"index\", self.get_meta(\"index\") - 1) # Adjusts itself to be one less, acounting for index shift
 
-func _on_area_2d_mouse_exited():
+func _on_area_2d_mouse_exited(): # Hover stuff
 	mouse_hover = false
 	GlobalData.hovering_on = -1
 	GlobalData.hovering_type = \"Black\"
@@ -74,6 +78,7 @@ func _on_area_2d_mouse_entered():
 radius = 520.0
 
 [node name="Connection" type="Node2D" node_paths=PackedStringArray("hover", "outerCircle") groups=["Connection"]]
+editor_description = "The building block of all wiring systems. There are two types, player placed and editor placed. The player placed are instantiated at runtime by the wire_placer. The editor plaed ones, at ready() are detected by the wire_placer and added to the connection list. These cannot be deleted. Colour is differentiated by the 'Type' metadata and its group."
 scale = Vector2(0.05, 0.05)
 script = SubResource("GDScript_tbos6")
 hover = NodePath("Hover")
