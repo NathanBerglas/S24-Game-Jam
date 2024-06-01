@@ -8,28 +8,27 @@
 [node name="Grren-Red_House" type="Node2D"]
 
 [node name="Outline" type="Sprite2D" parent="."]
-top_level = true
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n8irg")
 
 [node name="Left" type="Sprite2D" parent="."]
 modulate = Color(0, 0.521569, 0.364706, 1)
-top_level = true
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_esa8w")
 
 [node name="Right" type="Sprite2D" parent="."]
 modulate = Color(0.807843, 0, 0.337255, 1)
-top_level = true
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_id6tb")
 
 [node name="ConnectionLeft" parent="." groups=["ConnectionGreen"] instance=ExtResource("4_uc3s4")]
+z_index = -1
 position = Vector2(-45, 45)
 metadata/connectionColour = Color(0, 0.521569, 0.364706, 1)
 metadata/Type = "Green"
 
 [node name="ConnectionRight" parent="." groups=["ConnectionRed"] instance=ExtResource("4_uc3s4")]
+z_index = -1
 position = Vector2(45, 45)
 metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
 metadata/Type = "Red"
