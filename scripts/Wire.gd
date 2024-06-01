@@ -18,6 +18,7 @@ func _ready():
 	var wire_placing = get_parent()
 	if wire_placing:
 		wire_placing.wireDeleted.connect(on_wireDeleted)
+		self.set_meta("Colour", wire_placing.get_meta("Colour").blend(Color(0.25, 0.25, 0.25, 0.5))) # Get parent colour, then add with dark grey 50% alpha
 	collision_polygon = CollisionPolygon2D.new()
 	var direction = (end_point - start_point).normalized()
 	var orthogonal = direction.orthogonal() * 10
