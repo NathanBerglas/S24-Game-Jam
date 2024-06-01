@@ -120,6 +120,8 @@ func _input(event):
 				wire_instance.start_point = placedConnectorsLocations[wire_instance.start_index]
 				wire_instance.end_point = placedConnectorsLocations[wire_instance.end_index]
 				add_child(wire_instance)
+				GlobalData.wire_coords.append(wire_instance.start_point)
+				GlobalData.wire_coords.append(wire_instance.end_point)
 				GlobalData.push_cost()
 				wire_instance.wire_deleted.connect(on_wire_deleted)
 			add_child(connection_instance)
