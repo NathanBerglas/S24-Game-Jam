@@ -38,6 +38,7 @@ func _process(delta):
 
 func _on_pressed():
 	GlobalData.item = 1
+	print(\"1\")
 "
 
 [node name="Shop Menu" type="Node2D"]

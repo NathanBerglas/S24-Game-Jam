@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dfoagigh6nxs7" path="res://scenes/shop_menu.tscn" id="1_y8rx1"]
 [ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="3_lwnty"]
 [ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="3_q112i"]
-[ext_resource type="PackedScene" uid="uid://ds1myi5vtn85r" path="res://scenes/bridge.tscn" id="4_uqgew"]
 [ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="5_ai2nv"]
+[ext_resource type="PackedScene" uid="uid://b1u50nuxvxg4m" path="res://scenes/bridgePlacing.tscn" id="6_ikjtv"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,11 +18,11 @@ position = Vector2(633, 349)
 metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
 metadata/Type = "Red"
 
-[node name="Bridge" parent="." instance=ExtResource("4_uqgew")]
-visible = false
-
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -101
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("5_ai2nv")
+
+[node name="Bridge2" parent="." instance=ExtResource("6_ikjtv")]

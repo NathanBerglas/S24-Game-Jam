@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input (event) :
 	#checks to ensure user has chosen "bridge" in the shop menu NOTE!!! CURRENTLY ==0 for testing purposes change to == 2
-	if GlobalData.item == 0:
+	if GlobalData.item == 2:
 		#creates and places the bridge 'b' on the screen
 		if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var b = bridge.instantiate()
