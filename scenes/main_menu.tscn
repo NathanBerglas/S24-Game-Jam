@@ -1,0 +1,625 @@
+[gd_scene load_steps=5 format=3 uid="uid://be2orc87mv50k"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_6eui7"]
+[ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="1_rxsdn"]
+[ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="2_sam8r"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uwqte"]
+specular_color = Color(0.807843, 0, 0.337255, 1)
+
+[node name="MainMenu" type="Control"]
+clip_children = 2
+light_mask = 22
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6eui7")
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Baackground" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 311.0
+offset_right = 720.0
+offset_bottom = 583.0
+scale = Vector2(1.16842, 0.966027)
+theme_override_constants/separation = 5
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Cychwyn"
+language = "cy"
+
+[node name="How2PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 30
+text = "Sut i chwarae"
+language = "cy"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 30
+text = "Dewisiadau"
+language = "cy"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 30
+text = "Ymddiswyddo"
+language = "cy"
+
+[node name="LetterI1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 153.0
+offset_top = 113.0
+offset_right = 168.0
+offset_bottom = 213.0
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterI2" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 110.0
+offset_right = 226.0
+offset_bottom = 210.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterI3" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 202.0
+offset_right = 226.0
+offset_bottom = 302.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterI4" type="Sprite2D" parent="."]
+position = Vector2(161.36, 117.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterI5" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(161.36, 117.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterI6" type="Sprite2D" parent="."]
+position = Vector2(161.36, 209.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterI7" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(161.36, 209.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterT1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 264.0
+offset_top = 113.0
+offset_right = 279.0
+offset_bottom = 213.0
+scale = Vector2(1, 1.04)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterT4" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 321.0
+offset_top = 110.0
+offset_right = 336.0
+offset_bottom = 210.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterT2" type="Sprite2D" parent="."]
+position = Vector2(271.36, 117.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterT3" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(271.36, 117.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterS1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 444.442
+offset_top = 102.0
+offset_right = 459.442
+offset_bottom = 202.0
+rotation = 1.0472
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterS2" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 438.442
+offset_top = 171.0
+offset_right = 453.442
+offset_bottom = 271.0
+rotation = 1.0472
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterS3" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 449.0
+offset_top = 170.0
+offset_right = 464.0
+offset_bottom = 270.0
+rotation = 2.0944
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterS4" type="Sprite2D" parent="."]
+position = Vector2(390.36, 143.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterS5" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(390.36, 143.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterS6" type="Sprite2D" parent="."]
+position = Vector2(441.36, 176.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterS7" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(441.36, 176.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterP1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 469.0
+offset_top = 108.0
+offset_right = 484.0
+offset_bottom = 208.0
+scale = Vector2(1, 1.08)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterP7" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 474.0
+offset_top = 128.0
+offset_right = 489.0
+offset_bottom = 228.0
+rotation = -1.309
+scale = Vector2(0.999995, 0.507808)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterP8" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 484.0
+offset_top = 167.0
+offset_right = 499.0
+offset_bottom = 267.0
+rotation = -2.0944
+scale = Vector2(0.999995, 0.507808)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterP17" type="Sprite2D" parent="."]
+position = Vector2(517.36, 135.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterP18" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(517.36, 135.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterP19" type="Sprite2D" parent="."]
+position = Vector2(476.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterP20" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(476.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterP21" type="Sprite2D" parent="."]
+position = Vector2(476.36, 161.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterP22" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(476.36, 161.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterR4" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 543.0
+offset_top = 161.0
+offset_right = 558.0
+offset_bottom = 261.0
+rotation = -0.785398
+scale = Vector2(0.999995, 0.770293)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterR1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 543.0
+offset_top = 113.0
+offset_right = 558.0
+offset_bottom = 213.0
+scale = Vector2(1, 1.04)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterR6" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 548.0
+offset_top = 128.0
+offset_right = 563.0
+offset_bottom = 228.0
+rotation = -1.309
+scale = Vector2(0.999995, 0.507808)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterR5" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 558.0
+offset_top = 167.0
+offset_right = 573.0
+offset_bottom = 267.0
+rotation = -2.0944
+scale = Vector2(0.999995, 0.507808)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterR15" type="Sprite2D" parent="."]
+position = Vector2(591.36, 135.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterR16" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(591.36, 135.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterR11" type="Sprite2D" parent="."]
+position = Vector2(550.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterR12" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(550.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterR13" type="Sprite2D" parent="."]
+position = Vector2(550.36, 161.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterR14" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(550.36, 161.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterS8" type="Sprite2D" parent="."]
+position = Vector2(390.36, 143.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterS9" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(390.36, 143.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterE1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 628.0
+offset_top = 113.0
+offset_right = 643.0
+offset_bottom = 213.0
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterE3" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 199.0
+offset_right = 721.0
+offset_bottom = 299.0
+rotation = 1.5708
+scale = Vector2(1, 0.7)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterE2" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 114.0
+offset_right = 721.0
+offset_bottom = 214.0
+rotation = 1.5708
+scale = Vector2(1, 0.7)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterE4" type="Sprite2D" parent="."]
+position = Vector2(636.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterE5" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(636.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterE8" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 679.0
+offset_top = 154.0
+offset_right = 694.0
+offset_bottom = 254.0
+rotation = 1.5708
+scale = Vector2(1, 0.46001)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterE9" type="Sprite2D" parent="."]
+position = Vector2(636.36, 161.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterE10" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(636.36, 161.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterE6" type="Sprite2D" parent="."]
+position = Vector2(636.36, 205.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterE7" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(636.36, 205.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterA1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 799.0
+offset_top = 161.0
+offset_right = 814.0
+offset_bottom = 261.0
+rotation = 1.5708
+scale = Vector2(1, 0.572148)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterA2" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 767.0
+offset_top = 110.0
+offset_right = 782.0
+offset_bottom = 210.0
+rotation = 0.523599
+scale = Vector2(1, 1.14393)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterA3" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 762.0
+offset_top = 117.0
+offset_right = 777.0
+offset_bottom = 217.0
+rotation = -0.523599
+scale = Vector2(1, 1.14393)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterA4" type="Sprite2D" parent="."]
+position = Vector2(770.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterA5" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(770.36, 121.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterA6" type="Sprite2D" parent="."]
+position = Vector2(742.36, 167.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterA7" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(742.36, 167.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterA8" type="Sprite2D" parent="."]
+position = Vector2(798.36, 167.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterA9" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(798.36, 167.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterD1" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 892.0
+offset_top = 155.0
+offset_right = 907.0
+offset_bottom = 255.0
+rotation = 0.785398
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterD2" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 903.0
+offset_top = 161.0
+offset_right = 918.0
+offset_bottom = 261.0
+rotation = 2.35619
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterD7" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 841.0
+offset_top = 113.0
+offset_right = 856.0
+offset_bottom = 213.0
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterD3" type="Sprite2D" parent="."]
+position = Vector2(847.812, 120.812)
+rotation = -0.261799
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterD4" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(847.812, 120.812)
+rotation = -0.261799
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterD8" type="Sprite2D" parent="."]
+position = Vector2(890.812, 161.812)
+rotation = -0.261799
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterD9" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(890.812, 161.812)
+rotation = -0.261799
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterD5" type="Sprite2D" parent="."]
+position = Vector2(849.36, 207.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterD6" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(849.36, 207.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterS10" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 980.442
+offset_top = 102.0
+offset_right = 995.442
+offset_bottom = 202.0
+rotation = 1.0472
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterS11" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 974.442
+offset_top = 171.0
+offset_right = 989.442
+offset_bottom = 271.0
+rotation = 1.0472
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterS12" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+layout_mode = 0
+offset_left = 985.0
+offset_top = 170.0
+offset_right = 1000.0
+offset_bottom = 270.0
+rotation = 2.0944
+scale = Vector2(1, 0.692153)
+texture = SubResource("CanvasTexture_uwqte")
+
+[node name="LetterS13" type="Sprite2D" parent="."]
+position = Vector2(926.36, 143.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterS14" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(926.36, 143.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[node name="LetterS15" type="Sprite2D" parent="."]
+position = Vector2(977.36, 176.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_rxsdn")
+
+[node name="LetterS16" type="Sprite2D" parent="."]
+modulate = Color(0.807843, 0, 0.337255, 1)
+position = Vector2(977.36, 176.36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_sam8r")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/How2PlayButton" to="." method="_on_how_2_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
