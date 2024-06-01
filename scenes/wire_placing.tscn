@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="4_yqd81"]
 
 [node name="Wire Placing" type="Node2D" node_paths=PackedStringArray("cursor", "cursorOuterCircle") groups=["wire_placing_g"]]
+editor_description = "A mono colour controller that allows players to place and delete wires and connectors. Black colour and type for default."
 script = ExtResource("1_1njo6")
 connection_scene = ExtResource("2_0da6p")
 wire_scene = ExtResource("3_c5m8q")
