@@ -4,6 +4,7 @@ extends Node2D
 @export var wire_scene: PackedScene
 
 @export var cursor: Node2D
+@export var cursorOuterCircle: Sprite2D
 
 var connectorCount = 0
 var placedConnectors = []
@@ -13,6 +14,7 @@ var wires: Array = []
 @export var additionalCost = 0
 
 signal connectorDeleted
+signal connectorCreated
 signal wireDeleted
 
 var line_start: Vector2
@@ -22,11 +24,11 @@ var do_draw_line = false
 var connectorPrice = 1000
 var pricePerPixel = 1
 
-@export var enabled = false
+@export var enabled = true
 
-	# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	cursor.set_meta("connectionColour", self.get_meta("Colour"))
+	cursorOuterCircle.modulate = self.get_meta("Colour")
 	var preexisting = get_tree().get_nodes_in_group(self.get_meta("Target"))
 	for pCon in preexisting:
 		placedConnectors.append(pCon)
@@ -34,7 +36,6 @@ func _ready():
 		pCon.set_meta("index", connectorCount)
 		pCon.place_wire_begin_signal.connect(place_wire_begin)
 		connectorCount += 1
-	#place_wire_begin()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -121,6 +122,7 @@ func _input(event):
 				add_child(wire_instance)
 				wire_instance.wire_deleted.connect(on_wire_deleted)
 			add_child(connection_instance)
+			connectorCreated.emit(connection_instance)
 			GlobalData.activeConnector = connectorCount - 1
 			GlobalData.push_now = true
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:

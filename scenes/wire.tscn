@@ -5,6 +5,8 @@
 [node name="Wire" type="Node2D" node_paths=PackedStringArray("myArea")]
 script = ExtResource("1_3wuyu")
 myArea = NodePath("Area2D")
+metadata/Type = "Black"
+metadata/Colour = Color(0, 0, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 

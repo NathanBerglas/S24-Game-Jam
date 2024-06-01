@@ -20,11 +20,14 @@ var mouse_hover = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var wire_placing = get_parent()
-	if wire_placing and self.get_meta(\"fromPlacer_canBeDeleted\"):
+	if wire_placing.is_in_group(\"wire_placing_g\") and self.get_meta(\"fromPlacer_canBeDeleted\"):
 		wire_placing.connectorDeleted.connect(_on_connectorDeleted)
+	if wire_placing.is_in_group(\"wire_placing_g\"):
 		outerCircle.modulate = wire_placing.get_meta(\"Colour\")
+		print(\"taking from wire placer\")
 	else:
 		outerCircle.modulate = self.get_meta(\"connectionColour\")
+		print(\"getting my own\")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -69,9 +72,9 @@ script = SubResource("GDScript_tbos6")
 hover = NodePath("Hover")
 outerCircle = NodePath("Outer Circle")
 metadata/index = -1
-metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/connectionColour = Color(0, 0, 0, 1)
 metadata/fromPlacer_canBeDeleted = false
-metadata/Type = "Red"
+metadata/Type = "Black"
 
 [node name="Outer Circle" type="Sprite2D" parent="."]
 texture = ExtResource("1_no3tg")

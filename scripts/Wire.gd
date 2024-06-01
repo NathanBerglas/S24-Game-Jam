@@ -30,7 +30,7 @@ func _ready():
 func _draw():
 	if mouse_hover and not GlobalData.placing_mode_on and GlobalData.hovering_on == -1:
 		draw_line(start_point, end_point, Color.DARK_GRAY, 20.0)
-	draw_line(start_point, end_point, Color.RED, 10.0)
+	draw_line(start_point, end_point, self.get_meta("Colour"), 10.0)
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and not GlobalData.placing_mode_on and GlobalData.hovering_on == -1:

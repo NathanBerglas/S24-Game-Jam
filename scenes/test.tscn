@@ -7,6 +7,8 @@
 
 [node name="Connection" parent="." groups=["ConnectionRed"] instance=ExtResource("2_6kosr")]
 position = Vector2(620, 437)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"
 
 [node name="Connection2" parent="." groups=["ConnectionBlue"] instance=ExtResource("2_6kosr")]
 position = Vector2(794, 186)

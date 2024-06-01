@@ -9,15 +9,9 @@ func _ready():
 	WPBlue.enabled = false
 	WPRed.enabled = false
 	WPGreen.enabled = false
-	var existing_Bconnections = get_tree().get_nodes_in_group("ConnectionBlue")
-	for bCon in existing_Bconnections:
-		bCon.enable_blue.connect(on_blue_enable)
-	var existing_Rconnections = get_tree().get_nodes_in_group("ConnectionRed")
-	for rCon in existing_Rconnections:
-		rCon.enable_red.connect(on_red_enable)
-	var existing_Gconnections = get_tree().get_nodes_in_group("ConnectionGreen")
-	for gCon in existing_Gconnections:
-		gCon.enable_green.connect(on_green_enable)
+	var existing_connections = get_tree().get_nodes_in_group("Connection")
+	for con in existing_connections:
+		on_connection_created(con)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,3 +34,12 @@ func on_green_enable():
 	WPBlue.enabled = false
 	WPRed.enabled = false
 	WPGreen.enabled = true
+	
+func on_connection_created(connectionNode):
+	if connectionNode.get_meta("Type") == "Blue":
+		connectionNode.enable_blue.connect(on_blue_enable)
+	elif connectionNode.get_meta("Type") == "Red":
+		connectionNode.enable_red.connect(on_red_enable)
+	elif connectionNode.get_meta("Type") == "Green":
+		connectionNode.enable_green.connect(on_green_enable)
+	

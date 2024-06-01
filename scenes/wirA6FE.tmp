@@ -25,23 +25,3 @@ texture = ExtResource("3_3sc1v")
 
 [node name="Inner Circle" type="Sprite2D" parent="Cursor"]
 texture = ExtResource("4_yqd81")
-
-[node name="Shop Zone" type="ColorRect" parent="."]
-visible = false
-modulate = Color(0.895563, 0.215671, 0.976811, 1)
-offset_top = 245.0
-offset_right = 430.0
-offset_bottom = 255.0
-color = Color(1, 0, 1, 0)
-
-[node name="Shop Zone2" type="ColorRect" parent="."]
-visible = false
-offset_left = 423.0
-offset_top = -8.0
-offset_right = 430.0
-offset_bottom = 257.0
-color = Color(1, 1, 1, 0)
-
-[connection signal="mouse_entered" from="Shop Zone" to="." method="_on_shop_zone_mouse_entered"]
-[connection signal="mouse_entered" from="Shop Zone2" to="." method="_on_shop_zone_mouse_entered"]
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

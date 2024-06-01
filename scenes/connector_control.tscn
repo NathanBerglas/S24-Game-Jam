@@ -16,8 +16,14 @@ metadata/Colour = Color(0.392157, 0.258824, 1, 1)
 
 [node name="Wire PlacingRed" parent="." instance=ExtResource("1_ta431")]
 metadata/Target = "ConnectionRed"
+metadata/Type = "Red"
+metadata/Colour = Color(0.807843, 0, 0.337255, 1)
 
 [node name="Wire PlacingGreen" parent="." instance=ExtResource("1_ta431")]
 metadata/Target = "ConnectionGreen"
 metadata/Type = "Green"
 metadata/Colour = Color(0, 0.521569, 0.364706, 1)
+
+[connection signal="connectorCreated" from="Wire PlacingBlue" to="." method="on_connection_created"]
+[connection signal="connectorCreated" from="Wire PlacingRed" to="." method="on_connection_created"]
+[connection signal="connectorCreated" from="Wire PlacingGreen" to="." method="on_connection_created"]
