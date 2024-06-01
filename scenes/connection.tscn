@@ -34,7 +34,8 @@ func _process(delta):
 	hover.visible = mouse_hover and not GlobalData.placing_mode_on
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
-	if not GlobalData.placing_mode_on and event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if not GlobalData.placing_mode_on and event is InputEventMouseButton and event.pressed:
+		print(\"Adjusting focus\")
 		if self.get_meta(\"Type\") == \"Red\":
 			print(\"Let's lay some red\")
 			enable_red.emit()
@@ -44,10 +45,13 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 		elif self.get_meta(\"Type\") == \"Blue\":
 			print(\"Blue for you!\")
 			enable_blue.emit()
-		GlobalData.activeConnector = self.get_meta(\"index\")
-		place_wire_begin_signal.emit()
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			GlobalData.activeConnector = self.get_meta(\"index\")
+			place_wire_begin_signal.emit()
 
 func _on_connectorDeleted(index):
+	if not get_parent().enabled:
+		return
 	if self.get_meta(\"index\") == index:
 		GlobalData.hovering_on = -1
 		queue_free()

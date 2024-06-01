@@ -32,14 +32,13 @@ func _ready():
 	var preexisting = get_tree().get_nodes_in_group(self.get_meta("Target"))
 	for pCon in preexisting:
 		placedConnectors.append(pCon)
-		placedConnectorsLocations.append(pCon.position)
+		placedConnectorsLocations.append(pCon.global_position)
 		pCon.set_meta("index", connectorCount)
 		pCon.place_wire_begin_signal.connect(place_wire_begin)
 		connectorCount += 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-
 	if not enabled:
 		return
 	if GlobalData.placing_mode_on:
@@ -72,7 +71,7 @@ func placing_wire():
 	if (additionalCost != 0):
 		GlobalData.cur_cost = floor(additionalCost)
 
-func _input(event):
+func _unhandled_input(event):
 	if not enabled:
 		return
 	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -181,15 +180,8 @@ func on_wire_deleted(start_index, end_index):
 		if wire[0] == start_index and wire[1] == end_index:
 			wires.remove_at(windex)
 			break
-		windex += 1	
-		
-
-
+		windex += 1
 
 func _on_shop_zone_mouse_entered():
 	GlobalData.placing_mode_on = false
 	cursor.visible = false
- 
-
-#func _on_visibility_changed():
-#	enabled = not enabled

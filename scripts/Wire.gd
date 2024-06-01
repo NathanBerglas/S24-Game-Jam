@@ -24,7 +24,7 @@ func _ready():
 	collision_polygon.set_polygon(PackedVector2Array([start_point + orthogonal, start_point - orthogonal, end_point - orthogonal, end_point + orthogonal]))
 	myArea.add_child(collision_polygon)
 	print("New wireside: (", start_index, ", ", end_index, ")")
-	#assert(start_index != end_index)
+	assert(start_index != end_index)
 
 # Draw the wire
 func _draw():
