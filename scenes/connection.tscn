@@ -8,6 +8,10 @@ script/source = "extends Node2D
 
 signal place_wire_begin_signal
 
+signal enable_red
+signal enable_green
+signal enable_blue
+
 @export var hover: Sprite2D
 @export var outerCircle: Sprite2D
 
@@ -18,7 +22,9 @@ func _ready():
 	var wire_placing = get_parent()
 	if wire_placing and self.get_meta(\"fromPlacer_canBeDeleted\"):
 		wire_placing.connectorDeleted.connect(_on_connectorDeleted)
-	outerCircle.modulate = self.get_meta(\"connectionColour\")
+		outerCircle.modulate = wire_placing.get_meta(\"Colour\")
+	else:
+		outerCircle.modulate = self.get_meta(\"connectionColour\")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,6 +32,15 @@ func _process(delta):
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if not GlobalData.placing_mode_on and event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if self.get_meta(\"Type\") == \"Red\":
+			print(\"Let's lay some red\")
+			enable_red.emit()
+		elif self.get_meta(\"Type\") == \"Green\":
+			print(\"I'm a green machine!\")
+			enable_green.emit()
+		elif self.get_meta(\"Type\") == \"Blue\":
+			print(\"Blue for you!\")
+			enable_blue.emit()
 		GlobalData.activeConnector = self.get_meta(\"index\")
 		place_wire_begin_signal.emit()
 
@@ -56,6 +71,7 @@ outerCircle = NodePath("Outer Circle")
 metadata/index = -1
 metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
 metadata/fromPlacer_canBeDeleted = false
+metadata/Type = "Red"
 
 [node name="Outer Circle" type="Sprite2D" parent="."]
 texture = ExtResource("1_no3tg")

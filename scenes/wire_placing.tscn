@@ -11,6 +11,9 @@ script = ExtResource("1_1njo6")
 connection_scene = ExtResource("2_0da6p")
 wire_scene = ExtResource("3_c5m8q")
 cursor = NodePath("Cursor")
+metadata/Target = "Connection"
+metadata/Type = "Red"
+metadata/Colour = Color(0.807843, 0, 0.337255, 1)
 
 [node name="Cursor" type="Node2D" parent="."]
 visible = false
@@ -41,3 +44,4 @@ color = Color(1, 1, 1, 0)
 
 [connection signal="mouse_entered" from="Shop Zone" to="." method="_on_shop_zone_mouse_entered"]
 [connection signal="mouse_entered" from="Shop Zone2" to="." method="_on_shop_zone_mouse_entered"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
