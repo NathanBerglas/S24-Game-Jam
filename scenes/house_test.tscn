@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dksbkpi86t6oa"]
+
+[ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="1_5fbn5"]
+[ext_resource type="PackedScene" uid="uid://bj7qidd5elne4" path="res://scenes/house.tscn" id="2_20a8p"]
+
+[node name="House Test" type="Node2D"]
+
+[node name="ConnectorControl" parent="." instance=ExtResource("1_5fbn5")]
+
+[node name="House" parent="." instance=ExtResource("2_20a8p")]
+position = Vector2(280, 126)
+
+[node name="House2" parent="." instance=ExtResource("2_20a8p")]
+position = Vector2(494, 430)
+
+[node name="House3" parent="." instance=ExtResource("2_20a8p")]
+position = Vector2(818, 163)

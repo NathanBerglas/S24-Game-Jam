@@ -71,7 +71,7 @@ func placing_wire():
 	if (additionalCost != 0):
 		GlobalData.cur_cost = floor(additionalCost)
 
-func _unhandled_input(event):
+func _input(event):
 	if not enabled:
 		return
 	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -137,35 +137,39 @@ func _unhandled_input(event):
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_C:
 		print(placedConnectorsLocations)	
 	elif not GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		if GlobalData.hovering_on != -1 and placedConnectors[GlobalData.hovering_on].get_meta("fromPlacer_canBeDeleted"):
-			print("We should be deleting: ", GlobalData.hovering_on)
-			var windex = 0
-			print("Wires: ", wires)
-			while windex < wires.size():
-				var wire = wires[windex]
-				print("Begin process of wire, ", wire)
-				if wire[0] == GlobalData.hovering_on or wire[1] == GlobalData.hovering_on:
-					wires.remove_at(windex)
-					print("Deletion of wire: ", wire)
-					continue
-				else:
-					print("Kept wire: ", wire)
-				if wire[0] > GlobalData.hovering_on:
-					wire[0] -= 1
-				if wire[1] > GlobalData.hovering_on:
-					wire[1] -= 1
-				windex += 1
-				print("New wire: ", wire)
-			wireDeleted.emit(GlobalData.hovering_on) #wireside
-			if GlobalData.activeConnector == GlobalData.hovering_on:
-				GlobalData.activeConnector = connectorCount - 2
-			elif GlobalData.activeConnector > GlobalData.hovering_on:
-				GlobalData.activeConnector -= 1
-			placedConnectorsLocations.pop_at(GlobalData.hovering_on)
-			placedConnectors.pop_at(GlobalData.hovering_on)
-			connectorCount -= 1
-			connectorDeleted.emit(GlobalData.hovering_on)
+		if GlobalData.hovering_type == self.get_meta("Type"): 
+			if GlobalData.hovering_on != -1 and placedConnectors[GlobalData.hovering_on].get_meta("fromPlacer_canBeDeleted"):
+				deleteConnection()
 
+func deleteConnection():
+	print("We should be deleting: ", GlobalData.hovering_on)
+	var windex = 0
+	print("Wires: ", wires)
+	while windex < wires.size():
+		var wire = wires[windex]
+		print("Begin process of wire, ", wire)
+		if wire[0] == GlobalData.hovering_on or wire[1] == GlobalData.hovering_on:
+			wires.remove_at(windex)
+			print("Deletion of wire: ", wire)
+			continue
+		else:
+			print("Kept wire: ", wire)
+		if wire[0] > GlobalData.hovering_on:
+			wire[0] -= 1
+		if wire[1] > GlobalData.hovering_on:
+			wire[1] -= 1
+		windex += 1
+		print("New wire: ", wire)
+	wireDeleted.emit(GlobalData.hovering_on) #wireside
+	if GlobalData.activeConnector == GlobalData.hovering_on:
+		GlobalData.activeConnector = connectorCount - 2
+	elif GlobalData.activeConnector > GlobalData.hovering_on:
+		GlobalData.activeConnector -= 1
+	placedConnectorsLocations.pop_at(GlobalData.hovering_on)
+	placedConnectors.pop_at(GlobalData.hovering_on)
+	connectorCount -= 1
+	connectorDeleted.emit(GlobalData.hovering_on)
+			
 func _draw():
 	if not enabled:
 		return

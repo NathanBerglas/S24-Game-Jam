@@ -54,6 +54,7 @@ func _on_connectorDeleted(index):
 		return
 	if self.get_meta(\"index\") == index:
 		GlobalData.hovering_on = -1
+		GlobalData.hovering_type = \"Black\"
 		queue_free()
 	if self.get_meta(\"index\") > index:
 		self.set_meta(\"index\", self.get_meta(\"index\") - 1)
@@ -61,10 +62,12 @@ func _on_connectorDeleted(index):
 func _on_area_2d_mouse_exited():
 	mouse_hover = false
 	GlobalData.hovering_on = -1
+	GlobalData.hovering_type = \"Black\"
 
 func _on_area_2d_mouse_entered():
 	mouse_hover = true
 	GlobalData.hovering_on = self.get_meta(\"index\")
+	GlobalData.hovering_type = self.get_meta(\"Type\")
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_002vn"]

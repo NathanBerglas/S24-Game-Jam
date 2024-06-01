@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://be2orc87mv50k"]
+[gd_scene load_steps=5 format=3 uid="uid://dgfbs38acd5lq"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_6eui7"]
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="1_rxsdn"]

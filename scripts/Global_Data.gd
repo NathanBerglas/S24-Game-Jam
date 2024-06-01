@@ -9,6 +9,7 @@ var push_now = false
 var placing_mode_on = false
 var activeConnector = -1
 var hovering_on = -1
+var hovering_type = "Black"
 
 func push_cost():
 	cur_money = cur_money - cur_cost
