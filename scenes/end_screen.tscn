@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="1_u5uio"]
 [ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="2_rr25d"]
+[ext_resource type="Script" path="res://scenes/Button.gd" id="3_yfcfu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_c585n"]
 specular_color = Color(0.807843, 0, 0.337255, 1)
@@ -10,374 +11,388 @@ specular_color = Color(0.807843, 0, 0.337255, 1)
 
 [node name="Baackground" type="TextureRect" parent="."]
 z_index = -1
+custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterI1" type="TextureRect" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1000, 255)
+scale = Vector2(2, 2)
+
+[node name="LetterI1" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 603.0
-offset_top = 255.0
-offset_right = 618.0
-offset_bottom = 355.0
+offset_right = 15.0
+offset_bottom = 100.0
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterI2" type="TextureRect" parent="."]
+[node name="LetterI2" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 661.0
-offset_top = 252.0
-offset_right = 676.0
-offset_bottom = 352.0
+offset_left = 58.0
+offset_top = -3.0
+offset_right = 73.0
+offset_bottom = 97.0
 rotation = 1.5708
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterI3" type="TextureRect" parent="."]
+[node name="LetterI3" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 661.0
-offset_top = 344.0
-offset_right = 676.0
-offset_bottom = 444.0
+offset_left = 58.0
+offset_top = 89.0
+offset_right = 73.0
+offset_bottom = 189.0
 rotation = 1.5708
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterI4" type="Sprite2D" parent="."]
-position = Vector2(611.36, 259.36)
+[node name="LetterI4" type="Sprite2D" parent="Node2D"]
+position = Vector2(8.35999, 4.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterI5" type="Sprite2D" parent="."]
+[node name="LetterI5" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(611.36, 259.36)
+position = Vector2(8.35999, 4.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterI6" type="Sprite2D" parent="."]
-position = Vector2(611.36, 351.36)
+[node name="LetterI6" type="Sprite2D" parent="Node2D"]
+position = Vector2(8.35999, 96.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterI7" type="Sprite2D" parent="."]
+[node name="LetterI7" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(611.36, 351.36)
+position = Vector2(8.35999, 96.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterP1" type="TextureRect" parent="."]
+[node name="LetterP1" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 259.0
-offset_top = 243.0
-offset_right = 274.0
-offset_bottom = 343.0
+offset_left = -344.0
+offset_top = -12.0
+offset_right = -329.0
+offset_bottom = 88.0
 scale = Vector2(1, 1.08)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterP7" type="TextureRect" parent="."]
+[node name="LetterP7" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 264.0
-offset_top = 263.0
-offset_right = 279.0
-offset_bottom = 363.0
+offset_left = -339.0
+offset_top = 8.0
+offset_right = -324.0
+offset_bottom = 108.0
 rotation = -1.309
 scale = Vector2(0.999995, 0.507808)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterP8" type="TextureRect" parent="."]
+[node name="LetterP8" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 274.0
-offset_top = 302.0
-offset_right = 289.0
-offset_bottom = 402.0
+offset_left = -329.0
+offset_top = 47.0
+offset_right = -314.0
+offset_bottom = 147.0
 rotation = -2.0944
 scale = Vector2(0.999995, 0.507808)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterP17" type="Sprite2D" parent="."]
-position = Vector2(307.36, 270.36)
+[node name="LetterP17" type="Sprite2D" parent="Node2D"]
+position = Vector2(-295.64, 15.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterP18" type="Sprite2D" parent="."]
+[node name="LetterP18" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(307.36, 270.36)
+position = Vector2(-295.64, 15.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterP19" type="Sprite2D" parent="."]
-position = Vector2(266.36, 256.36)
+[node name="LetterP19" type="Sprite2D" parent="Node2D"]
+position = Vector2(-336.64, 1.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterP20" type="Sprite2D" parent="."]
+[node name="LetterP20" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(266.36, 256.36)
+position = Vector2(-336.64, 1.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterP21" type="Sprite2D" parent="."]
-position = Vector2(266.36, 296.36)
+[node name="LetterP21" type="Sprite2D" parent="Node2D"]
+position = Vector2(-336.64, 41.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterP22" type="Sprite2D" parent="."]
+[node name="LetterP22" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(266.36, 296.36)
+position = Vector2(-336.64, 41.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterR4" type="TextureRect" parent="."]
+[node name="LetterR4" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 342.0
-offset_top = 296.0
-offset_right = 357.0
-offset_bottom = 396.0
+offset_left = -261.0
+offset_top = 41.0
+offset_right = -246.0
+offset_bottom = 141.0
 rotation = -0.785398
 scale = Vector2(0.999995, 0.770293)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterR1" type="TextureRect" parent="."]
+[node name="LetterR1" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 342.0
-offset_top = 248.0
-offset_right = 357.0
-offset_bottom = 348.0
+offset_left = -261.0
+offset_top = -7.0
+offset_right = -246.0
+offset_bottom = 93.0
 scale = Vector2(1, 1.04)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterR6" type="TextureRect" parent="."]
+[node name="LetterR6" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 347.0
-offset_top = 263.0
-offset_right = 362.0
-offset_bottom = 363.0
+offset_left = -256.0
+offset_top = 8.0
+offset_right = -241.0
+offset_bottom = 108.0
 rotation = -1.309
 scale = Vector2(0.999995, 0.507808)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterR5" type="TextureRect" parent="."]
+[node name="LetterR5" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 357.0
-offset_top = 302.0
-offset_right = 372.0
-offset_bottom = 402.0
+offset_left = -246.0
+offset_top = 47.0
+offset_right = -231.0
+offset_bottom = 147.0
 rotation = -2.0944
 scale = Vector2(0.999995, 0.507808)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterR15" type="Sprite2D" parent="."]
-position = Vector2(390.36, 270.36)
+[node name="LetterR15" type="Sprite2D" parent="Node2D"]
+position = Vector2(-212.64, 15.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterR16" type="Sprite2D" parent="."]
+[node name="LetterR16" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(390.36, 270.36)
+position = Vector2(-212.64, 15.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterR11" type="Sprite2D" parent="."]
-position = Vector2(349.36, 256.36)
+[node name="LetterR11" type="Sprite2D" parent="Node2D"]
+position = Vector2(-253.64, 1.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterR12" type="Sprite2D" parent="."]
+[node name="LetterR12" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(349.36, 256.36)
+position = Vector2(-253.64, 1.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterR13" type="Sprite2D" parent="."]
-position = Vector2(349.36, 296.36)
+[node name="LetterR13" type="Sprite2D" parent="Node2D"]
+position = Vector2(-253.64, 41.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterR14" type="Sprite2D" parent="."]
+[node name="LetterR14" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(349.36, 296.36)
+position = Vector2(-253.64, 41.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterE1" type="TextureRect" parent="."]
+[node name="LetterE1" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 789.0
-offset_top = 245.0
-offset_right = 804.0
-offset_bottom = 345.0
+offset_left = 186.0
+offset_top = -10.0
+offset_right = 201.0
+offset_bottom = 90.0
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterE3" type="TextureRect" parent="."]
+[node name="LetterE3" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 867.0
-offset_top = 331.0
-offset_right = 882.0
-offset_bottom = 431.0
+offset_left = 264.0
+offset_top = 76.0
+offset_right = 279.0
+offset_bottom = 176.0
 rotation = 1.5708
 scale = Vector2(1, 0.7)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterE2" type="TextureRect" parent="."]
+[node name="LetterE2" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 867.0
-offset_top = 246.0
-offset_right = 882.0
-offset_bottom = 346.0
+offset_left = 264.0
+offset_top = -9.0
+offset_right = 279.0
+offset_bottom = 91.0
 rotation = 1.5708
 scale = Vector2(1, 0.7)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterE4" type="Sprite2D" parent="."]
-position = Vector2(797.36, 253.36)
+[node name="LetterE4" type="Sprite2D" parent="Node2D"]
+position = Vector2(194.36, -1.64)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterE5" type="Sprite2D" parent="."]
+[node name="LetterE5" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(797.36, 253.36)
+position = Vector2(194.36, -1.64)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterE8" type="TextureRect" parent="."]
+[node name="LetterE8" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 840.0
-offset_top = 286.0
-offset_right = 855.0
-offset_bottom = 386.0
+offset_left = 237.0
+offset_top = 31.0
+offset_right = 252.0
+offset_bottom = 131.0
 rotation = 1.5708
 scale = Vector2(1, 0.46001)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterE9" type="Sprite2D" parent="."]
-position = Vector2(797.36, 293.36)
+[node name="LetterE9" type="Sprite2D" parent="Node2D"]
+position = Vector2(194.36, 38.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterE10" type="Sprite2D" parent="."]
+[node name="LetterE10" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(797.36, 293.36)
+position = Vector2(194.36, 38.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterE6" type="Sprite2D" parent="."]
-position = Vector2(797.36, 337.36)
+[node name="LetterE6" type="Sprite2D" parent="Node2D"]
+position = Vector2(194.36, 82.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterE7" type="Sprite2D" parent="."]
+[node name="LetterE7" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(797.36, 337.36)
+position = Vector2(194.36, 82.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterA1" type="TextureRect" parent="."]
+[node name="LetterA1" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 510.197
-offset_top = 302.0
-offset_right = 525.197
-offset_bottom = 402.0
+offset_left = -92.803
+offset_top = 47.0
+offset_right = -77.803
+offset_bottom = 147.0
 rotation = 1.5708
 scale = Vector2(1, 0.572148)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterA2" type="TextureRect" parent="."]
+[node name="LetterA2" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 478.197
-offset_top = 251.0
-offset_right = 493.197
-offset_bottom = 351.0
+offset_left = -124.803
+offset_top = -4.0
+offset_right = -109.803
+offset_bottom = 96.0
 rotation = 0.523599
 scale = Vector2(1, 1.14393)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterA3" type="TextureRect" parent="."]
+[node name="LetterA3" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 473.197
-offset_top = 258.0
-offset_right = 488.197
-offset_bottom = 358.0
+offset_left = -129.803
+offset_top = 3.0
+offset_right = -114.803
+offset_bottom = 103.0
 rotation = -0.523599
 scale = Vector2(1, 1.14393)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterA4" type="Sprite2D" parent="."]
-position = Vector2(481.557, 262.36)
+[node name="LetterA4" type="Sprite2D" parent="Node2D"]
+position = Vector2(-121.443, 7.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterA5" type="Sprite2D" parent="."]
+[node name="LetterA5" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(481.557, 262.36)
+position = Vector2(-121.443, 7.35999)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterA6" type="Sprite2D" parent="."]
-position = Vector2(453.557, 308.36)
+[node name="LetterA6" type="Sprite2D" parent="Node2D"]
+position = Vector2(-149.443, 53.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterA7" type="Sprite2D" parent="."]
+[node name="LetterA7" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(453.557, 308.36)
+position = Vector2(-149.443, 53.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterA8" type="Sprite2D" parent="."]
-position = Vector2(509.557, 308.36)
+[node name="LetterA8" type="Sprite2D" parent="Node2D"]
+position = Vector2(-93.443, 53.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterA9" type="Sprite2D" parent="."]
+[node name="LetterA9" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(509.557, 308.36)
+position = Vector2(-93.443, 53.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterS10" type="TextureRect" parent="."]
+[node name="LetterS10" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 749.442
-offset_top = 246.0
-offset_right = 764.442
-offset_bottom = 346.0
+offset_left = 146.442
+offset_top = -9.0
+offset_right = 161.442
+offset_bottom = 91.0
 rotation = 1.0472
 scale = Vector2(1, 0.692153)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterS11" type="TextureRect" parent="."]
+[node name="LetterS11" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 743.442
-offset_top = 315.0
-offset_right = 758.442
-offset_bottom = 415.0
+offset_left = 140.442
+offset_top = 60.0
+offset_right = 155.442
+offset_bottom = 160.0
 rotation = 1.0472
 scale = Vector2(1, 0.692153)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterS12" type="TextureRect" parent="."]
+[node name="LetterS12" type="TextureRect" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-offset_left = 754.0
-offset_top = 314.0
-offset_right = 769.0
-offset_bottom = 414.0
+offset_left = 151.0
+offset_top = 59.0
+offset_right = 166.0
+offset_bottom = 159.0
 rotation = 2.0944
 scale = Vector2(1, 0.692153)
 texture = SubResource("CanvasTexture_c585n")
 
-[node name="LetterS13" type="Sprite2D" parent="."]
-position = Vector2(695.36, 287.36)
+[node name="LetterS13" type="Sprite2D" parent="Node2D"]
+position = Vector2(92.36, 32.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterS14" type="Sprite2D" parent="."]
+[node name="LetterS14" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(695.36, 287.36)
+position = Vector2(92.36, 32.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
 
-[node name="LetterS15" type="Sprite2D" parent="."]
-position = Vector2(746.36, 320.36)
+[node name="LetterS15" type="Sprite2D" parent="Node2D"]
+position = Vector2(143.36, 65.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_u5uio")
 
-[node name="LetterS16" type="Sprite2D" parent="."]
+[node name="LetterS16" type="Sprite2D" parent="Node2D"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(746.36, 320.36)
+position = Vector2(143.36, 65.36)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_rr25d")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 757.0
+offset_top = 561.0
+offset_right = 1126.0
+offset_bottom = 647.0
+theme_override_font_sizes/font_size = 40
+text = "Bonus level"
+script = ExtResource("3_yfcfu")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

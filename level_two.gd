@@ -21,3 +21,7 @@ func set_viewport_scale(scale_factor):
 	#var viewport = get_viewport()
 	#viewport.set_size_override(true, viewport.get_size() * scale_factor)
 	get_window().content_scale_size = Vector2i(scale_factor*1920, scale_factor*1080)
+
+
+func _on_skip_button_pressed():
+	get_tree().change_scene_to_file("res://level_three.tscn") # Need to change to level three (or whatever current level should be)

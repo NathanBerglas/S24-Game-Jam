@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1id21d2oy7wc"]
+[gd_scene load_steps=5 format=3 uid="uid://c1id21d2oy7wc"]
 
 [ext_resource type="PackedScene" uid="uid://dfoagigh6nxs7" path="res://scenes/shop_menu.tscn" id="1_y8rx1"]
 [ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="3_lwnty"]
 [ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="5_ai2nv"]
 [ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/backgroundMusic.mp3" id="6_fea7m"]
 [ext_resource type="PackedScene" uid="uid://b1u50nuxvxg4m" path="res://scenes/bridgePlacing.tscn" id="6_ikjtv"]
-[ext_resource type="PackedScene" uid="uid://bb0kr021o3u8e" path="res://scenes/doesItWorkButton.tscn" id="8_kv1n8"]
 
 [node name="Main" type="Node2D"]
 

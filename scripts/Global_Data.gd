@@ -110,9 +110,11 @@ func intersect (start, end, lines):
 		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
 		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
 			print(n)
+			print(lines[n])
 			return true
 		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
 			print(n)
+			print(lines[n])
 			return true
 	return false
 

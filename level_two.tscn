@@ -12,7 +12,17 @@
 [node name="Level Two" type="Node2D" node_paths=PackedStringArray("done_button")]
 position = Vector2(960, 540)
 script = ExtResource("2_c7s44")
-done_button = NodePath("Button")
+done_button = NodePath("Complete Button")
+
+[node name="Skip Button" type="Button" parent="."]
+offset_left = -936.0
+offset_top = -212.0
+offset_right = -809.0
+offset_bottom = -161.0
+text = "Skip Level
+"
+script = ExtResource("7_vybca")
+metadata/_edit_use_anchors_ = true
 
 [node name="House Prefabs" type="Node2D" parent="."]
 
@@ -82,7 +92,7 @@ position = Vector2(984, -467)
 [node name="Main" parent="." instance=ExtResource("6_371k8")]
 position = Vector2(-960, -540)
 
-[node name="Button" type="Button" parent="."]
+[node name="Complete Button" type="Button" parent="."]
 offset_left = -945.0
 offset_top = -275.0
 offset_right = -818.0
@@ -101,5 +111,6 @@ offset_bottom = 1620.0
 mouse_filter = 2
 texture = ExtResource("8_87g0n")
 
-[connection signal="pressed" from="Button" to="." method="_on_pressed"]
-[connection signal="pressed" from="Button" to="." method="on_pressed"]
+[connection signal="pressed" from="Skip Button" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="Complete Button" to="." method="on_pressed"]
+[connection signal="pressed" from="Complete Button" to="." method="_on_pressed"]

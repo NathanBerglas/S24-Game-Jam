@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0mnoiudk5yge"]
+[gd_scene load_steps=8 format=3 uid="uid://c0mnoiudk5yge"]
 
 [ext_resource type="PackedScene" uid="uid://c7m6y2tyuimao" path="res://level_two.tscn" id="1_v3qnd"]
 [ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="2_7boww"]
@@ -7,7 +7,38 @@
 [ext_resource type="PackedScene" uid="uid://ck5kwx2jhrpal" path="res://scenes/House Prefabs/Green-Red_House.tscn" id="4_6eu3p"]
 [ext_resource type="PackedScene" uid="uid://b7y0v2w6q3dku" path="res://scenes/House Prefabs/Green-Blue_House.tscn" id="5_ek7oe"]
 
+[sub_resource type="GDScript" id="GDScript_4c3md"]
+script/source = "extends Node2D
+
+@export var done_button: Button
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_viewport_scale(2)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func on_pressed():
+	var result = done_button.check_if_works()
+	print(\"From level 2: this connection setup has a validity of: \" + str(result))
+	if result:
+		get_tree().change_scene_to_file(\"res://scenes/end_screen.tscn\") # Need to change to level three (or whatever current level should be)
+
+# Function to set the viewport scale
+func set_viewport_scale(scale_factor):
+	#var viewport = get_viewport()
+	#viewport.set_size_override(true, viewport.get_size() * scale_factor)
+	get_window().content_scale_size = Vector2i(scale_factor*1920, scale_factor*1080)
+
+
+func _on_skip_button_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/end_screen.tscn\") # Need to change to level three (or whatever current level should be)
+"
+
 [node name="Level Three" instance=ExtResource("1_v3qnd")]
+script = SubResource("GDScript_4c3md")
 
 [node name="Green-Red-Blue_House" parent="House Prefabs" index="21" instance=ExtResource("2_dqt75")]
 position = Vector2(624, 177)
