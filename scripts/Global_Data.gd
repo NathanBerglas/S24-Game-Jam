@@ -23,6 +23,9 @@ func push_cost():
 #for Buttons
 var item = 0
 
+#for grid points
+var gridpoints = []
+
 var ConnectorLocationUp_red = []
 var ConnectorLocationUp_green = []
 var ConnectorLocationUp_blue = []

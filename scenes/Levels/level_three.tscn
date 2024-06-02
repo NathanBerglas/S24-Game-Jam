@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0mnoiudk5yge"]
 
-[ext_resource type="PackedScene" uid="uid://c7m6y2tyuimao" path="res://level_two.tscn" id="1_v3qnd"]
+[ext_resource type="PackedScene" uid="uid://c7m6y2tyuimao" path="res://scenes/Levels/level_two.tscn" id="1_v3qnd"]
 [ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="2_7boww"]
 [ext_resource type="PackedScene" uid="uid://bj7qidd5elne4" path="res://scenes/House Prefabs/Green-Red-Blue_house.tscn" id="2_dqt75"]
 [ext_resource type="PackedScene" uid="uid://c1u3e0ycih7tt" path="res://scenes/House Prefabs/Green_House.tscn" id="3_apdpa"]

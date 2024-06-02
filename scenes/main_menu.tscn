@@ -39,32 +39,33 @@ theme_override_constants/separation = 5
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "Cychwyn"
-language = "cy"
+text = "Play
+"
+language = "en"
 
 [node name="How2PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 theme_override_font_sizes/font_size = 30
-text = "Sut i chwarae"
-language = "cy"
+text = "How to play"
+language = "en"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 theme_override_font_sizes/font_size = 30
-text = "Dewisiadau"
-language = "cy"
+text = "Settings"
+language = "en"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 theme_override_font_sizes/font_size = 30
-text = "Ymddiswyddo"
-language = "cy"
+text = "Exit"
+language = "en"
 
 [node name="LetterI1" type="TextureRect" parent="."]
 modulate = Color(0.807843, 0, 0.337255, 1)
