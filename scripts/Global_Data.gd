@@ -23,10 +23,17 @@ func push_cost():
 #for Buttons
 var item = 0
 
+var ConnectorLocationUp_red = []
+var ConnectorLocationUp_green = []
+var ConnectorLocationUp_blue = []
 
+var ConnectorInstanceUp_red = []
+var ConnectorInstanceUp_green = []
+var ConnectorInstanceUp_blue = []
 
-
-
+var WireUp_red = []
+var WireUp_green = []
+var WireUp_blue = []
 
 #for wires/bridges
 

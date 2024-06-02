@@ -37,6 +37,7 @@ func _ready():
 	var preexisting = get_tree().get_nodes_in_group(self.get_meta("Target")) # Gets all the pre-existing node in its colour
 	for pCon in preexisting:
 		placedConnectors.append(pCon) # Adds to placed connectors
+		pass_connector_up(pCon)
 		placedConnectorsLocations.append(pCon.global_position)
 		pCon.set_meta("index", connectorCount) # Sets index of connectors
 		pCon.place_wire_begin_signal.connect(place_wire_begin) # Connects wire signal
@@ -104,7 +105,8 @@ func _input(event):
 						PlaceSound.play(0.0)
 						wireCreated.emit(wire_instance) # Connects to connector_control telling to sort and connect to the new wire
 						GlobalData.wire_coords.append(wire_instance.start_point) # adds wire to global data
-						GlobalData.wire_coords.append(wire_instance.end_point) 
+						GlobalData.wire_coords.append(wire_instance.end_point)
+						pass_wire_up([wire_instance.start_index, wire_instance.end_index])
 						GlobalData.push_cost() # Finalizes wire cost
 						wire_instance.wire_deleted.connect(on_wire_deleted)
 						GlobalData.activeConnector = index # Sets the new active connector to the placed Connector the wire was just added to
@@ -120,6 +122,7 @@ func _input(event):
 			connection_instance.position = get_viewport().get_mouse_position()
 			placedConnectorsLocations.append(connection_instance.position)
 			placedConnectors.append(connection_instance)
+			pass_connector_up(connection_instance)
 			print("New connector")
 			connectorCount += 1
 			cost += connectorPrice
@@ -136,6 +139,7 @@ func _input(event):
 				wireCreated.emit(wire_instance)
 				GlobalData.wire_coords.append(wire_instance.start_point)
 				GlobalData.wire_coords.append(wire_instance.end_point)
+				pass_wire_up([wire_instance.start_index, wire_instance.end_index])
 				GlobalData.push_cost()
 				wire_instance.wire_deleted.connect(on_wire_deleted)
 				add_child(wire_instance) # Instantate connector now that wire is done
@@ -216,3 +220,25 @@ func on_wire_deleted(start_index, end_index, type): # wire is specified ans star
 func _on_shop_zone_mouse_entered():
 	GlobalData.placing_mode_on = false
 	cursor.visible = false
+
+func pass_connector_up(connector):
+	var my_type = self.get_meta("Type")
+	if my_type == "Red":
+		GlobalData.ConnectorInstanceUp_red.append(connector)
+		GlobalData.ConnectorLocationUp_red.append(connector.global_position)
+	if my_type == "Green":
+		GlobalData.ConnectorInstanceUp_green.append(connector)
+		GlobalData.ConnectorLocationUp_green.append(connector.global_position)
+	if my_type == "Blue":
+		GlobalData.ConnectorInstanceUp_blue.append(connector)
+		GlobalData.ConnectorLocationUp_blue.append(connector.global_position)
+	
+func pass_wire_up(wire):
+	var my_type = self.get_meta("Type")
+	if my_type == "Red":
+		GlobalData.WireUp_red.append(wire)
+	if my_type == "Green":
+		GlobalData.WireUp_green.append(wire)
+	if my_type == "Blue":
+		GlobalData.WireUp_blue.append(wire)
+	
