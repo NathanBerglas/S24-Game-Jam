@@ -20,15 +20,3 @@ z_index = -1
 position = Vector2(0, -45)
 metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
 metadata/Type = "Red"
-
-[node name="Connection2" parent="." groups=["ConnectionRed"] instance=ExtResource("3_456l4")]
-z_index = -1
-position = Vector2(45, 45)
-metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
-metadata/Type = "Red"
-
-[node name="Connection3" parent="." groups=["ConnectionRed"] instance=ExtResource("3_456l4")]
-z_index = -1
-position = Vector2(-45, 45)
-metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
-metadata/Type = "Red"
