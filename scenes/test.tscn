@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdc7hn4puxe3y"]
+
+[ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="2_6kosr"]
+[ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="2_gpugw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Connection" parent="." groups=["ConnectionRed"] instance=ExtResource("2_6kosr")]
+position = Vector2(570, 433)
+metadata/connectionColour = Color(0.807843, 0, 0.337255, 1)
+metadata/Type = "Red"
+
+[node name="Connection2" parent="." groups=["ConnectionBlue"] instance=ExtResource("2_6kosr")]
+position = Vector2(794, 186)
+metadata/connectionColour = Color(0.392157, 0.258824, 1, 1)
+metadata/Type = "Blue"
+
+[node name="Connection3" parent="." groups=["ConnectionGreen"] instance=ExtResource("2_6kosr")]
+position = Vector2(223, 163)
+metadata/connectionColour = Color(0, 0.521569, 0.364706, 1)
+metadata/Type = "Green"
+
+[node name="ConnectorControl" parent="." instance=ExtResource("2_gpugw")]
+
+[node name="Connection4" parent="." groups=["ConnectionBlue"] instance=ExtResource("2_6kosr")]
+position = Vector2(275, 499)
+metadata/connectionColour = Color(0.392157, 0.258824, 1, 1)
+metadata/Type = "Blue"

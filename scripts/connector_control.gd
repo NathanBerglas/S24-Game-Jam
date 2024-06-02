@@ -4,6 +4,8 @@ extends Node2D
 @export var WPRed: Node2D
 @export var WPGreen: Node2D
 
+@export var SwitchSound: AudioStreamPlayer
+
 ## Because it was really late and I spent way to long thinking about how to do multiple colours, this is the best I could come up with
 ## This is a master controller of the three wire colours, and works by enabling and disabling specific colours when needed
 ## The default is black, and means no colour selected
@@ -23,18 +25,24 @@ func _process(delta):
 
 func on_blue_enable(): # Sends a silly message and enables only that colour
 	print("Let's blue!")
+	if not WPBlue.enabled: # Switch 
+		SwitchSound.play(0.0)
 	WPBlue.enabled = true
 	WPRed.enabled = false
 	WPGreen.enabled = false
 	
 func on_red_enable():
 	print("Red locked and loaded!")
+	if not WPRed.enabled: # Switch 
+		SwitchSound.play(0.0)
 	WPBlue.enabled = false
 	WPRed.enabled = true
 	WPGreen.enabled = false
 
 func on_green_enable():
 	print("green.") # my favorite
+	if not WPGreen.enabled: # Switch 
+		SwitchSound.play(0.0)
 	WPBlue.enabled = false
 	WPRed.enabled = false
 	WPGreen.enabled = true

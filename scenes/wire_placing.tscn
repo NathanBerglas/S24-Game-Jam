@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://ml872aqpiu0a"]
+[gd_scene load_steps=8 format=3 uid="uid://ml872aqpiu0a"]
 
 [ext_resource type="Script" path="res://scripts/wirePlacing.gd" id="1_1njo6"]
 [ext_resource type="PackedScene" uid="uid://2c25uk6kwqyi" path="res://scenes/connection.tscn" id="2_0da6p"]
 [ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="3_3sc1v"]
 [ext_resource type="PackedScene" uid="uid://bou1pw66u264m" path="res://scenes/wire.tscn" id="3_c5m8q"]
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="4_yqd81"]
+[ext_resource type="AudioStream" uid="uid://l1u8v6ylt633" path="res://art/Sound/place.mp3" id="6_qpp8b"]
+[ext_resource type="AudioStream" uid="uid://dwb1ump4jbqgi" path="res://art/Sound/delete.mp3" id="7_2ssia"]
 
-[node name="Wire Placing" type="Node2D" node_paths=PackedStringArray("cursor", "cursorOuterCircle") groups=["wire_placing_g"]]
+[node name="Wire Placing" type="Node2D" node_paths=PackedStringArray("cursor", "cursorOuterCircle", "PlaceSound", "DeleteSound") groups=["wire_placing_g"]]
 editor_description = "A mono colour controller that allows players to place and delete wires and connectors. Black colour and type for default."
 script = ExtResource("1_1njo6")
 connection_scene = ExtResource("2_0da6p")
 wire_scene = ExtResource("3_c5m8q")
 cursor = NodePath("Cursor")
 cursorOuterCircle = NodePath("Cursor/Outer Circle")
+PlaceSound = NodePath("PlaceSound")
+DeleteSound = NodePath("DeleteSound")
 metadata/Target = "Connection"
 metadata/Type = "Black"
 metadata/Colour = Color(0, 0, 0, 1)
@@ -42,6 +46,13 @@ offset_top = -8.0
 offset_right = 430.0
 offset_bottom = 257.0
 color = Color(1, 1, 1, 0)
+
+[node name="PlaceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qpp8b")
+bus = &"Sound Effects"
+
+[node name="DeleteSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2ssia")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="Shop Zone" to="." method="_on_shop_zone_mouse_entered"]

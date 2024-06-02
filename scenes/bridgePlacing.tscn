@@ -20,3 +20,12 @@ texture = ExtResource("3_u4qth")
 [node name="Sprite2D2" type="Sprite2D" parent="Cursor"]
 scale = Vector2(0.225, 0.225)
 texture = ExtResource("4_te7dn")
+
+[node name="Border" type="ColorRect" parent="."]
+offset_right = 444.0
+offset_bottom = 260.0
+mouse_filter = 1
+color = Color(1, 0.490196, 1, 0)
+
+[connection signal="mouse_entered" from="Border" to="." method="_on_border_mouse_entered"]
+[connection signal="mouse_exited" from="Border" to="." method="_on_border_mouse_exited"]

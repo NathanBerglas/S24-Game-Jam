@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs5mjk1hnihsf"]
+[gd_scene load_steps=4 format=3 uid="uid://cs5mjk1hnihsf"]
 
 [ext_resource type="Script" path="res://scripts/connector_control.gd" id="1_1j28k"]
 [ext_resource type="PackedScene" uid="uid://ml872aqpiu0a" path="res://scenes/wire_placing.tscn" id="1_ta431"]
+[ext_resource type="AudioStream" uid="uid://c74bfg44wtirp" path="res://art/Sound/switchColour.mp3" id="3_3tq8o"]
 
-[node name="ConnectorControl" type="Node2D" node_paths=PackedStringArray("WPBlue", "WPRed", "WPGreen")]
+[node name="ConnectorControl" type="Node2D" node_paths=PackedStringArray("WPBlue", "WPRed", "WPGreen", "SwitchSound")]
 editor_description = "The master control that deals with different colours. It enables and disables wire placers, that's it."
 script = ExtResource("1_1j28k")
 WPBlue = NodePath("Wire PlacingBlue")
 WPRed = NodePath("Wire PlacingRed")
 WPGreen = NodePath("Wire PlacingGreen")
+SwitchSound = NodePath("SwitchSound")
 
 [node name="Wire PlacingBlue" parent="." instance=ExtResource("1_ta431")]
 metadata/Target = "ConnectionBlue"
@@ -24,6 +26,10 @@ metadata/Colour = Color(0.807843, 0, 0.337255, 1)
 metadata/Target = "ConnectionGreen"
 metadata/Type = "Green"
 metadata/Colour = Color(0, 0.521569, 0.364706, 1)
+
+[node name="SwitchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3tq8o")
+bus = &"Sound Effects"
 
 [connection signal="connectorCreated" from="Wire PlacingBlue" to="." method="on_connection_created"]
 [connection signal="wireCreated" from="Wire PlacingBlue" to="." method="on_connection_created"]

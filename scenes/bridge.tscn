@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds1myi5vtn85r"]
+[gd_scene load_steps=3 format=3 uid="uid://rtolqaqs4o6o"]
 
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="1_jgqqx"]
 [ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="2_m3214"]
