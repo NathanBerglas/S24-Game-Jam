@@ -10,11 +10,13 @@ func _ready():
 func _process(_delta):
 	pass
 
+# Use this function and this code below it to see if the setup is accurate. 
 func _on_pressed():
 	var result = check_if_works()
 	print("this connection setup has a validity of: " + str(result))
 	return result
 
+# Checks if the result is valid. Returns true if so. 
 func check_if_works():
 	var red_wires = processed_wires(GlobalData.WireUp_red, GlobalData.ConnectorLocationUp_red)
 	var green_wires = processed_wires(GlobalData.WireUp_green, GlobalData.ConnectorLocationUp_green)
