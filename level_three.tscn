@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0mnoiudk5yge"]
+
+[ext_resource type="PackedScene" uid="uid://c7m6y2tyuimao" path="res://level_two.tscn" id="1_v3qnd"]
+[ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="2_7boww"]
+[ext_resource type="PackedScene" uid="uid://bj7qidd5elne4" path="res://scenes/House Prefabs/Green-Red-Blue_house.tscn" id="2_dqt75"]
+[ext_resource type="PackedScene" uid="uid://c1u3e0ycih7tt" path="res://scenes/House Prefabs/Green_House.tscn" id="3_apdpa"]
+[ext_resource type="PackedScene" uid="uid://ck5kwx2jhrpal" path="res://scenes/House Prefabs/Green-Red_House.tscn" id="4_6eu3p"]
+[ext_resource type="PackedScene" uid="uid://b7y0v2w6q3dku" path="res://scenes/House Prefabs/Green-Blue_House.tscn" id="5_ek7oe"]
+
+[node name="Level One" instance=ExtResource("1_v3qnd")]
+
+[node name="Blue_House" parent="." index="0" instance=ExtResource("2_7boww")]
+position = Vector2(960, 540)
+
+[node name="Blue_House2" parent="." index="1" instance=ExtResource("2_7boww")]
+position = Vector2(940, 252)
+
+[node name="Blue_House3" parent="." index="2" instance=ExtResource("2_7boww")]
+position = Vector2(918, 868)
+
+[node name="Blue_House4" parent="." index="3" instance=ExtResource("2_7boww")]
+position = Vector2(570, 452)
+
+[node name="Blue_House5" parent="." index="4" instance=ExtResource("2_7boww")]
+position = Vector2(1782, 121)
+
+[node name="Blue_House6" parent="." index="5" instance=ExtResource("2_7boww")]
+position = Vector2(1296, 557)
+
+[node name="Green-Red-Blue_House" parent="." index="21" instance=ExtResource("2_dqt75")]
+position = Vector2(624, 177)
+
+[node name="Green-Red-Blue_House2" parent="." index="22" instance=ExtResource("2_dqt75")]
+position = Vector2(371, -477)
+
+[node name="Green_House" parent="." index="23" instance=ExtResource("3_apdpa")]
+position = Vector2(-227, 293)
+
+[node name="Green_House2" parent="." index="24" instance=ExtResource("3_apdpa")]
+position = Vector2(-29, -420)
+
+[node name="Green_House3" parent="." index="25" instance=ExtResource("3_apdpa")]
+position = Vector2(330, 1462)
+
+[node name="Green_House4" parent="." index="26" instance=ExtResource("3_apdpa")]
+position = Vector2(1229, 908)
+
+[node name="Green_House5" parent="." index="27" instance=ExtResource("3_apdpa")]
+position = Vector2(1493, 902)
+
+[node name="Grren-Red_House" parent="." index="28" instance=ExtResource("4_6eu3p")]
+position = Vector2(960, 1150)
+
+[node name="Green_House6" parent="." index="29" instance=ExtResource("3_apdpa")]
+position = Vector2(1832, 641)
+
+[node name="Green-Blue_House" parent="." index="30" instance=ExtResource("5_ek7oe")]
+position = Vector2(1571, -141)
+
+[node name="Green-Blue_House2" parent="." index="31" instance=ExtResource("5_ek7oe")]
+position = Vector2(-627, -466)

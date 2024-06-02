@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/backgroundMusic.mp3" id="6_fea7m"]
 [ext_resource type="PackedScene" path="res://scenes/bridgePlacing.tscn" id="6_ikjtv"]
 [ext_resource type="PackedScene" uid="uid://bj7qidd5elne4" path="res://scenes/House Prefabs/Green-Red-Blue_house.tscn" id="7_2mvym"]
+[ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="5_ai2nv"]
 >>>>>>> refs/remotes/origin/main
 
 [node name="Main" type="Node2D"]
@@ -33,7 +34,6 @@ visible = false
 z_index = 1
 color = Color(0.699653, 0.699653, 0.699653, 1)
 
->>>>>>> refs/remotes/origin/main
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 z_index = -101
@@ -58,4 +58,5 @@ bus = &"Music"
 
 [node name="Green-Red-Blue_House" parent="." instance=ExtResource("7_2mvym")]
 position = Vector2(875, 492)
+[node name="DoesItWorkButton" parent="." instance=ExtResource("8_kv1n8")]
 >>>>>>> refs/remotes/origin/main

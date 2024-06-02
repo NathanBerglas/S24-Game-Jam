@@ -65,7 +65,6 @@ func place_wire_end():
 	GlobalData.placing_mode_on = false
 	cursor.visible = false
 
-
 func placing_wire():
 	if not enabled:
 		return
@@ -83,7 +82,7 @@ func _input(event):
 	if not enabled:
 		return
 	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed: # if a player places a wire or connector
-		if len(wires) > 1 and GlobalData.intersect(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), placedConnectorsLocations): # Checks if valid
+		if len(wires) > 1 and GlobalData.intersect_at(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), placedConnectorsLocations): # Checks if valid
 			print("Intersection!")
 			return
 		var index = 0 # Enumerates for loop
@@ -188,12 +187,14 @@ func deleteConnection():
 	print("We should be deleting: ", GlobalData.hovering_on)
 	connectorCount -= 1 #sehr wesentlich!!!
 	var windex = 0 # Enumerate for the while loop
+		
 	print("Wires: ", wires)
 	while windex < wires.size():
 		var wire = wires[windex] # makeshift version of 'for wire in wires'
 		## You use a for loop here because when a wire is removed it messes up the indexs and means wires are skipped. learnt the hard way
 		print("Begin process of wire, ", wire)
 		if wire[0] == GlobalData.hovering_on or wire[1] == GlobalData.hovering_on: # if this wire is the one the player is hovering on / ordered to be deleted
+			pass_wire_delete_up(wires[windex], self.get_meta("Type"))
 			wires.remove_at(windex)
 			print("Deletion of wire: ", wire)
 			continue
@@ -212,6 +213,7 @@ func deleteConnection():
 		GlobalData.activeConnector -= 1
 	placedConnectorsLocations.pop_at(GlobalData.hovering_on) # removed from array
 	placedConnectors.pop_at(GlobalData.hovering_on)
+	pass_connector_delete_up(GlobalData.hovering_on)
 	connectorDeleted.emit(GlobalData.hovering_on) # Tell all the connectors a connector is to be deleted
 	DeleteSound.play(0.0)
 			
@@ -230,6 +232,7 @@ func on_wire_deleted(start_index, end_index, type): # wire is specified ans star
 		if wire[0] == start_index and wire[1] == end_index: # if current wires is the one to be deleted
 			wires.remove_at(windex)
 			wireDeleted.emit(start_index, end_index, type)
+			pass_wire_delete_up([start_index, end_index], type)
 			DeleteSound.play(0.0)
 			break
 		windex += 1
@@ -249,6 +252,39 @@ func pass_connector_up(connector):
 	if my_type == "Blue":
 		GlobalData.ConnectorInstanceUp_blue.append(connector)
 		GlobalData.ConnectorLocationUp_blue.append(connector.global_position)
+	
+func pass_connector_delete_up(index):
+	var my_type = self.get_meta("Type")
+	if my_type == "Red":
+		GlobalData.ConnectorInstanceUp_red.remove_at(index)
+		GlobalData.ConnectorLocationUp_red.remove_at(index)
+	if my_type == "Green":
+		GlobalData.ConnectorInstanceUp_green.remove_at(index)
+		GlobalData.ConnectorLocationUp_green.remove_at(index)
+	if my_type == "Blue":
+		GlobalData.ConnectorInstanceUp_blue.remove_at(index)
+		GlobalData.ConnectorLocationUp_blue.remove_at(index)
+	
+func pass_wire_delete_up(wire, type):
+	var my_type = self.get_meta("Type")
+	if type != my_type:
+		return
+	var index = 0
+	if my_type == "Red":
+		for Gwire in GlobalData.WireUp_red:
+			if wire[0] == Gwire[0] and wire[0] == Gwire[0]:
+				GlobalData.WireUp_red.remove_at(index)
+			index += 1
+	if my_type == "Green":
+		for Gwire in GlobalData.WireUp_green:
+			if wire[0] == Gwire[0] and wire[0] == Gwire[0]:
+				GlobalData.WireUp_green.remove_at(index)
+			index += 1
+	if my_type == "Blue":
+		for Gwire in GlobalData.WireUp_blue:
+			if wire[0] == Gwire[0] and wire[0] == Gwire[0]:
+				GlobalData.WireUp_blue.remove_at(index)
+			index += 1
 	
 func pass_wire_up(wire):
 	var my_type = self.get_meta("Type")
