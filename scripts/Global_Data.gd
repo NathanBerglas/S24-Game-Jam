@@ -34,6 +34,54 @@ var item = 0
 #line for intersections
 ###each line is represented by the start and end coordinates (this means each line is two indices)
 var wire_coords = []
+var bridge_coords = []
+
+
+
+
+func intersect_at (start, end, lines):
+	var line = []
+	for n in range(0,len(lines) -2, 1):
+		#the start and end are stored as positions of nodes
+		#so you should be able to use start.x and start.y to access these values
+		#i've got a tab open that should have a simple formula I'll do it some time in the morning
+		var orient1 = orientation(start, end, lines[n])
+		var orient2 = orientation(start, end, lines[n+1])
+		var orient3 = orientation(lines[n], lines[n+1], start)
+		var orient4 = orientation(lines[n], lines[n+1], end)
+		if start == lines[n] or start == lines[n+1]:
+			continue
+		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
+		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
+				line.append[n]
+		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
+				line.append[n]
+	#now we have the correct line/lines that intersects, we now find each intersection point
+	for n in line:
+		var m1 = (end.y - start.y) / (end.x - start.y)
+		var m2 = (lines[n+1].y - lines[n].y) / (lines[n+1].x - lines[n].x)
+		var b1 = start.y - (m1 * start.x)
+		var b2 = (lines[n].y - (m2 * lines[n].x))
+		var px
+		var py
+		
+		if m1 - m2 != 0:
+			px = b1-b2 / m1-m2
+			py = m1 * px + b1
+		else:
+			continue###this is wrong but for now it'll work
+		var nearby = false
+		for coord in bridge_coords:
+			#30 is just a temporary value
+			if coord.x - px + coord.y - py < 30:
+				nearby = true
+				break
+		if not nearby:
+			return true
+		else:
+			return false
+
+
 
 #accepts start coordinates, end coordinates, and an array of lines to be checked against
 func intersect (start, end, lines):
@@ -45,12 +93,11 @@ func intersect (start, end, lines):
 		var orient2 = orientation(start, end, lines[n+1])
 		var orient3 = orientation(lines[n], lines[n+1], start)
 		var orient4 = orientation(lines[n], lines[n+1], end)
-
 		if start == lines[n] or start == lines[n+1]:
 			continue
 		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
 		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
-				return true
+			return true
 		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
 			return true
 	return false
