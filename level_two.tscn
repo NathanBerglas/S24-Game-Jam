@@ -1,54 +1,105 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7m6y2tyuimao"]
+[gd_scene load_steps=9 format=3 uid="uid://c7m6y2tyuimao"]
 
-[ext_resource type="PackedScene" uid="uid://bqom3fwyo1ku8" path="res://level_one.tscn" id="1_gvmds"]
+[ext_resource type="Script" path="res://level_two.gd" id="2_c7s44"]
 [ext_resource type="PackedScene" uid="uid://c36i4g6t2cque" path="res://scenes/House Prefabs/Red_House.tscn" id="2_r22j3"]
 [ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="3_md7yg"]
 [ext_resource type="PackedScene" uid="uid://b84tfxuxxedtj" path="res://scenes/House Prefabs/Blue-Red_House.tscn" id="4_e2muw"]
 [ext_resource type="PackedScene" uid="uid://b6tq6la3qakb" path="res://scenes/House Prefabs/Red-Blue_House.tscn" id="5_g7fv5"]
+[ext_resource type="PackedScene" uid="uid://c1id21d2oy7wc" path="res://scenes/main.tscn" id="6_371k8"]
+[ext_resource type="Script" path="res://scripts/does_it_work_button.gd" id="7_vybca"]
+[ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="8_87g0n"]
 
-[node name="Level One" instance=ExtResource("1_gvmds")]
+[node name="Level Two" type="Node2D" node_paths=PackedStringArray("done_button")]
+position = Vector2(960, 540)
+script = ExtResource("2_c7s44")
+done_button = NodePath("Button")
 
-[node name="Red_House" parent="." index="2" instance=ExtResource("2_r22j3")]
+[node name="House Prefabs" type="Node2D" parent="."]
+
+[node name="Blue_House" parent="House Prefabs" instance=ExtResource("3_md7yg")]
+position = Vector2(960, 540)
+
+[node name="Blue_House2" parent="House Prefabs" instance=ExtResource("3_md7yg")]
+position = Vector2(940, 252)
+
+[node name="Blue_House3" parent="House Prefabs" instance=ExtResource("3_md7yg")]
+position = Vector2(918, 868)
+
+[node name="Blue_House4" parent="House Prefabs" instance=ExtResource("3_md7yg")]
+position = Vector2(570, 452)
+
+[node name="Blue_House5" parent="House Prefabs" instance=ExtResource("3_md7yg")]
+position = Vector2(1782, 121)
+
+[node name="Blue_House6" parent="House Prefabs" instance=ExtResource("3_md7yg")]
+position = Vector2(1296, 557)
+
+[node name="Red_House" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(1457, 226)
 
-[node name="Red_House2" parent="." index="3" instance=ExtResource("2_r22j3")]
+[node name="Red_House2" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(1692, 410)
 
-[node name="Blue_House7" parent="." index="4" instance=ExtResource("3_md7yg")]
+[node name="Blue_House7" parent="House Prefabs" instance=ExtResource("3_md7yg")]
 position = Vector2(1782, 919)
 
-[node name="Blue_House8" parent="." index="5" instance=ExtResource("3_md7yg")]
+[node name="Blue_House8" parent="House Prefabs" instance=ExtResource("3_md7yg")]
 position = Vector2(1231, 1249)
 
-[node name="Red_House3" parent="." index="6" instance=ExtResource("2_r22j3")]
+[node name="Red_House3" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(1510, 1267)
 
-[node name="Red_House4" parent="." index="7" instance=ExtResource("2_r22j3")]
+[node name="Red_House4" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(606, 750)
 
-[node name="Red_House5" parent="." index="8" instance=ExtResource("2_r22j3")]
+[node name="Red_House5" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(260, 705)
 
-[node name="Blue-Red_House" parent="." index="9" instance=ExtResource("4_e2muw")]
+[node name="Blue-Red_House" parent="House Prefabs" instance=ExtResource("4_e2muw")]
 position = Vector2(-150, 949)
 
-[node name="Blue-Red_House2" parent="." index="10" instance=ExtResource("4_e2muw")]
+[node name="Blue-Red_House2" parent="House Prefabs" instance=ExtResource("4_e2muw")]
 position = Vector2(54, 1244)
 
-[node name="Blue-Red_House3" parent="." index="11" instance=ExtResource("4_e2muw")]
+[node name="Blue-Red_House3" parent="House Prefabs" instance=ExtResource("4_e2muw")]
 position = Vector2(553, 1257)
 
-[node name="Red_House6" parent="." index="12" instance=ExtResource("2_r22j3")]
+[node name="Red_House6" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(-95, -114)
 
-[node name="Red_House7" parent="." index="13" instance=ExtResource("2_r22j3")]
+[node name="Red_House7" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(162, 103)
 
-[node name="Red_House8" parent="." index="14" instance=ExtResource("2_r22j3")]
+[node name="Red_House8" parent="House Prefabs" instance=ExtResource("2_r22j3")]
 position = Vector2(-324, -333)
 
-[node name="Red-Blue_House" parent="." index="15" instance=ExtResource("5_g7fv5")]
+[node name="Red-Blue_House" parent="House Prefabs" instance=ExtResource("5_g7fv5")]
 position = Vector2(1266, -240)
 
-[node name="Red-Blue_House2" parent="." index="16" instance=ExtResource("5_g7fv5")]
+[node name="Red-Blue_House2" parent="House Prefabs" instance=ExtResource("5_g7fv5")]
 position = Vector2(984, -467)
+
+[node name="Main" parent="." instance=ExtResource("6_371k8")]
+position = Vector2(-960, -540)
+
+[node name="Button" type="Button" parent="."]
+offset_left = -945.0
+offset_top = -275.0
+offset_right = -818.0
+offset_bottom = -224.0
+text = "Level Complete"
+script = ExtResource("7_vybca")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -101
+custom_minimum_size = Vector2(3840, 2160)
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 2880.0
+offset_bottom = 1620.0
+mouse_filter = 2
+texture = ExtResource("8_87g0n")
+
+[connection signal="pressed" from="Button" to="." method="_on_pressed"]
+[connection signal="pressed" from="Button" to="." method="on_pressed"]

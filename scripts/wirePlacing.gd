@@ -170,23 +170,27 @@ func deleteConnection():
 	print("We should be deleting: ", GlobalData.hovering_on)
 	connectorCount -= 1 #sehr wesentlich!!!
 	var windex = 0 # Enumerate for the while loop
-		
+	var keep = false
 	print("Wires: ", wires)
 	while windex < wires.size():
+		keep = false
 		var wire = wires[windex] # makeshift version of 'for wire in wires'
 		## You use a for loop here because when a wire is removed it messes up the indexs and means wires are skipped. learnt the hard way
 		print("Begin process of wire, ", wire)
+		pass_wire_delete_up(wires[windex], self.get_meta("Type"))
 		if wire[0] == GlobalData.hovering_on or wire[1] == GlobalData.hovering_on: # if this wire is the one the player is hovering on / ordered to be deleted
-			pass_wire_delete_up(wires[windex], self.get_meta("Type"))
 			wires.remove_at(windex)
 			print("Deletion of wire: ", wire)
 			continue
 		else: 
+			keep = true
 			print("Kept wire: ", wire)
 		if wire[0] > GlobalData.hovering_on: # readjust indexs for removed wire
 			wire[0] -= 1
 		if wire[1] > GlobalData.hovering_on:
 			wire[1] -= 1
+		if keep:
+			pass_wire_up(wires[windex])
 		windex += 1
 		print("New wire: ", wire)
 	connection_wireDeleted.emit(GlobalData.hovering_on) # Tells wire that it should delete itself. This is the node-side wire (called wireside), not script-side wire in the array (that has been previously deleted)
