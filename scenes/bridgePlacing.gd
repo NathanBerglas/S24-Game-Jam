@@ -18,6 +18,7 @@ func _input (event) :
 			var b = bridge.instantiate()
 			b.position = get_global_mouse_position()
 			add_child(b)
+			GlobalData.bridge_coords.append(b.position)
 
 
 

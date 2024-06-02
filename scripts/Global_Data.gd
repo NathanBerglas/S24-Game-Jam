@@ -41,7 +41,10 @@ var bridge_coords = []
 
 func intersect_at (start, end, lines):
 	var line = []
-	for n in range(0,len(lines) -2, 1):
+	#if not intersect(start, end, lines):
+	#	return false
+	
+	for n in range(0,len(lines) -1, 1):
 		#the start and end are stored as positions of nodes
 		#so you should be able to use start.x and start.y to access these values
 		#i've got a tab open that should have a simple formula I'll do it some time in the morning
@@ -53,9 +56,9 @@ func intersect_at (start, end, lines):
 			continue
 		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
 		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
-				line.append[n]
+				line.append(n)
 		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
-				line.append[n]
+				line.append(n)
 	#now we have the correct line/lines that intersects, we now find each intersection point
 	for n in line:
 		var m1 = (end.y - start.y) / (end.x - start.y)
@@ -69,11 +72,13 @@ func intersect_at (start, end, lines):
 			px = b1-b2 / m1-m2
 			py = m1 * px + b1
 		else:
+			print("bad place")
 			continue###this is wrong but for now it'll work
 		var nearby = false
 		for coord in bridge_coords:
 			#30 is just a temporary value
-			if coord.x - px + coord.y - py < 30:
+			if coord.x - px + coord.y - py < 80:
+				print("huh???")
 				nearby = true
 				break
 		if not nearby:
@@ -85,7 +90,7 @@ func intersect_at (start, end, lines):
 
 #accepts start coordinates, end coordinates, and an array of lines to be checked against
 func intersect (start, end, lines):
-	for n in range(0,len(lines) -2, 1):
+	for n in range(0,len(lines) -1, 1):
 		#the start and end are stored as positions of nodes
 		#so you should be able to use start.x and start.y to access these values
 		#i've got a tab open that should have a simple formula I'll do it some time in the morning
@@ -97,8 +102,10 @@ func intersect (start, end, lines):
 			continue
 		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
 		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
+			print(n)
 			return true
 		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
+			print(n)
 			return true
 	return false
 
