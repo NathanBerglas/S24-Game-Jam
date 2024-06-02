@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqom3fwyo1ku8"]
+
+[ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="1_thowr"]
+[ext_resource type="PackedScene" uid="uid://c1id21d2oy7wc" path="res://scenes/main.tscn" id="2_nnnt4"]
+
+[node name="Level One" type="Node2D"]
+
+[node name="House Prefabs" type="Node" parent="."]
+
+[node name="Blue_House" parent="House Prefabs" instance=ExtResource("1_thowr")]
+position = Vector2(960, 540)
+
+[node name="Blue_House2" parent="House Prefabs" instance=ExtResource("1_thowr")]
+position = Vector2(940, 252)
+
+[node name="Blue_House3" parent="House Prefabs" instance=ExtResource("1_thowr")]
+position = Vector2(918, 868)
+
+[node name="Blue_House4" parent="House Prefabs" instance=ExtResource("1_thowr")]
+position = Vector2(570, 452)
+
+[node name="Blue_House5" parent="House Prefabs" instance=ExtResource("1_thowr")]
+position = Vector2(1782, 121)
+
+[node name="Blue_House6" parent="House Prefabs" instance=ExtResource("1_thowr")]
+position = Vector2(1296, 557)
+
+[node name="Main" parent="." instance=ExtResource("2_nnnt4")]
