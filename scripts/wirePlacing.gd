@@ -201,7 +201,7 @@ func _draw():
 		draw_line(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)
 
 func on_wire_deleted(start_index, end_index, type): # wire is specified ans start_index -> end_index
-	if not enabled or type != self.get_meta("Type"):
+	if type != self.get_meta("Type"):
 		print("not my type!: ", self.get_meta("Type"), " it should be this type: ", type, " or if not this is my enabled status: ", enabled)
 		return
 	var windex = 0 # enumerates wires
