@@ -252,6 +252,14 @@ func pass_wire_delete_up(wire, type):
 	var my_type = self.get_meta("Type")
 	if type != my_type:
 		return
+	var start =placedConnectorsLocations[wire[0]]
+	var end = placedConnectorsLocations[wire[1]]
+	for n in range(0,len(GlobalData.wire_coords) - 2, 1):
+		if GlobalData.wire_coords[n] == start and GlobalData.wire_coords[n+1] == end:
+			GlobalData.wire_coords.remove_at(n)
+			GlobalData.wire_coords.remove_at(n)
+	
+	
 	var index = 0
 	if my_type == "Red":
 		for Gwire in GlobalData.WireUp_red:
