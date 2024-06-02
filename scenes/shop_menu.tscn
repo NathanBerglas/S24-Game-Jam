@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfoagigh6nxs7"]
+[gd_scene load_steps=7 format=3 uid="uid://dfoagigh6nxs7"]
 
 [ext_resource type="Script" path="res://scripts/Shop Contact.gd" id="1_kj74l"]
 [ext_resource type="Texture2D" uid="uid://crgsqogw4fgj5" path="res://art/ConnectorInnerCircle.png" id="2_p5kr8"]
 [ext_resource type="Texture2D" uid="uid://duep8jlfs6v0w" path="res://art/ConnectorOuterCircle.png" id="3_j7ar5"]
-[ext_resource type="Texture2D" uid="uid://brxn0bl6rdyqn" path="res://icon.svg" id="4_p7ckb"]
 [ext_resource type="Script" path="res://scripts/BridgeButton.gd" id="6_xsh6j"]
-[ext_resource type="Script" path="res://scripts/Item3Button.gd" id="7_0i6yn"]
 
 [sub_resource type="GDScript" id="GDScript_b5mol"]
 script/source = "extends Label
@@ -108,14 +106,14 @@ text = "   Wire Node:                              $1000"
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Shop Menu/Shop Container/ITEM1 Rect"]
-position = Vector2(120, 22.3333)
-scale = Vector2(0.02, 0.02)
+position = Vector2(134.667, 32.6667)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_p5kr8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Shop Menu/Shop Container/ITEM1 Rect"]
 modulate = Color(0.807843, 0, 0.337255, 1)
-position = Vector2(120, 22.3333)
-scale = Vector2(0.02, 0.02)
+position = Vector2(134.667, 32.6667)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_j7ar5")
 
 [node name="ITEM2 Rect" type="ColorRect" parent="Shop Menu/Shop Container"]
@@ -137,40 +135,20 @@ layout_mode = 0
 offset_right = 276.0
 offset_bottom = 43.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "   Bridge:                                      $XXX"
+text = "   Bridge:                                      $5000"
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Shop Menu/Shop Container/ITEM2 Rect"]
-position = Vector2(96, 20)
-scale = Vector2(0.27, 0.27)
-texture = ExtResource("4_p7ckb")
+[node name="name" type="Sprite2D" parent="Shop Menu/Shop Container/ITEM2 Rect"]
+modulate = Color(0.804743, 0.804743, 0.804743, 1)
+position = Vector2(134, 30.3333)
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("2_p5kr8")
 
-[node name="ITEM3 Rect" type="ColorRect" parent="Shop Menu/Shop Container"]
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.721569, 0.721569, 0.721569, 1)
-
-[node name="Item3Button" type="Button" parent="Shop Menu/Shop Container/ITEM3 Rect"]
-modulate = Color(0.211765, 0.211765, 0.211765, 0)
-layout_mode = 0
-offset_right = 277.0
-offset_bottom = 43.0
-script = ExtResource("7_0i6yn")
-
-[node name="ITEM3" type="Label" parent="Shop Menu/Shop Container/ITEM3 Rect"]
-layout_mode = 0
-offset_right = 276.0
-offset_bottom = 49.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "   ITEM 3:                                      $XXX"
-vertical_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="Shop Menu/Shop Container/ITEM3 Rect"]
-position = Vector2(97, 21)
-scale = Vector2(0.27, 0.27)
-texture = ExtResource("4_p7ckb")
+[node name="Sprite2D2" type="Sprite2D" parent="Shop Menu/Shop Container/ITEM2 Rect"]
+position = Vector2(134.667, 30.3333)
+scale = Vector2(0.037, 0.037)
+texture = ExtResource("3_j7ar5")
 
 [connection signal="mouse_entered" from="Shop Menu" to="Shop Menu" method="_on_mouse_entered"]
 [connection signal="pressed" from="Shop Menu/Shop Container/ITEM1 Rect/WireButton" to="Shop Menu/Shop Container/ITEM1 Rect/WireButton" method="_on_pressed"]
 [connection signal="pressed" from="Shop Menu/Shop Container/ITEM2 Rect/BridgeButton" to="Shop Menu/Shop Container/ITEM2 Rect/BridgeButton" method="_on_pressed"]
-[connection signal="pressed" from="Shop Menu/Shop Container/ITEM3 Rect/Item3Button" to="Shop Menu/Shop Container/ITEM3 Rect/Item3Button" method="_on_pressed"]

@@ -48,8 +48,8 @@ var bridge_coords = []
 
 func intersect_at (start, end, lines):
 	var line = []
-	#if not intersect(start, end, lines):
-	#	return false
+	if not intersect(start, end, lines):
+		return false
 	
 	for n in range(0,len(lines) -1, 1):
 		#the start and end are stored as positions of nodes
