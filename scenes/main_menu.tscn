@@ -43,14 +43,6 @@ text = "Play
 "
 language = "en"
 
-[node name="How2PlayButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-theme_override_font_sizes/font_size = 30
-text = "How to play"
-language = "en"
-
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -621,6 +613,5 @@ scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_sam8r")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/How2PlayButton" to="." method="_on_how_2_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 [gd_scene load_steps=3 format=3 uid="uid://drvh7r1avkxu4"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://bqom3fwyo1ku8"]
+>>>>>>> f831c6d267ee487040c549240b97c8eb55c37e36
 
+[ext_resource type="Script" path="res://scenes/Levels/level_one.gd" id="1_3icoh"]
 [ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="1_thowr"]
 [ext_resource type="PackedScene" uid="uid://c1id21d2oy7wc" path="res://scenes/main.tscn" id="2_nnnt4"]
 
 [node name="Level One" type="Node2D"]
+script = ExtResource("1_3icoh")
 
 [node name="House Prefabs" type="Node" parent="."]
 
