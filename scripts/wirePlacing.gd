@@ -79,7 +79,7 @@ func placing_wire():
 func _input(event):
 	if not enabled:
 		return
-	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed and GlobalData.cur_money >= GlobalData.cur_cost: # if a player places a wire or connector
+	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed and GlobalData.cur_money >= GlobalData.cur_cost and GlobalData.item == 1: # if a player places a wire or connector
 		if len(wires) > 1 and GlobalData.intersect_at(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), GlobalData.wire_coords): # Checks if valid
 			print("Intersection!")
 			return
@@ -151,7 +151,7 @@ func _input(event):
 		place_wire_end()
 	elif GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.pressed: # same as escape
 		place_wire_end()
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_P:# and GlobalData.item == 1: # Shorcut. Designed for dev use, but may be implemented for player
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_P and GlobalData.item == 1: # Shorcut. Designed for dev use, but may be implemented for player
 		place_wire_begin()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_W: # Dev tool for showing wires script-side
 		print(wires)

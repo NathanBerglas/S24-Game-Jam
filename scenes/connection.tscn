@@ -54,7 +54,7 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx): # When the connectio
 		elif self.get_meta(\"Type\") == \"Blue\":
 			print(\"Blue for you!\")
 			enable_blue.emit()
-		if event.button_index == MOUSE_BUTTON_LEFT: # if it is left clicked, importantly done after switching to correct colour
+		if event.button_index == MOUSE_BUTTON_LEFT and GlobalData.item == 1: # if it is left clicked, importantly done after switching to correct colour
 			GlobalData.activeConnector = self.get_meta(\"index\") # Tells the wire_placer that this node is the active one that wants to lay wire
 			place_wire_begin_signal.emit() # Emits signal telling wire_placer that the mode should switch and we should begin to place wire
 
