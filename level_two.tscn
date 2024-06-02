@@ -112,5 +112,5 @@ mouse_filter = 2
 texture = ExtResource("8_87g0n")
 
 [connection signal="pressed" from="Skip Button" to="." method="_on_skip_button_pressed"]
-[connection signal="pressed" from="Complete Button" to="." method="on_pressed"]
 [connection signal="pressed" from="Complete Button" to="." method="_on_pressed"]
+[connection signal="pressed" from="Complete Button" to="." method="on_pressed"]
