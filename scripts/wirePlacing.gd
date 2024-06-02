@@ -80,7 +80,7 @@ func _input(event):
 	if not enabled:
 		return
 	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed: # if a player places a wire or connector
-		if len(wires) > 1 and GlobalData.intersect_at(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), placedConnectorsLocations): # Checks if valid
+		if len(wires) > 1 and GlobalData.intersect_at(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), GlobalData.wire_coords): # Checks if valid
 			print("Intersection!")
 			return
 		var index = 0 # Enumerates for loop

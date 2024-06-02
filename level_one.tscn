@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqom3fwyo1ku8"]
+[gd_scene load_steps=3 format=3 uid="uid://drvh7r1avkxu4"]
 
 [ext_resource type="PackedScene" uid="uid://bufp847ay86ts" path="res://scenes/House Prefabs/Blue_House.tscn" id="1_thowr"]
 [ext_resource type="PackedScene" uid="uid://c1id21d2oy7wc" path="res://scenes/main.tscn" id="2_nnnt4"]
@@ -26,3 +26,11 @@ position = Vector2(1782, 121)
 position = Vector2(1296, 557)
 
 [node name="Main" parent="." instance=ExtResource("2_nnnt4")]
+
+[node name="Control" type="ColorRect" parent="."]
+modulate = Color(1, 1, 0.0235294, 0.568627)
+custom_minimum_size = Vector2(75, 75)
+offset_left = 348.0
+offset_top = 553.0
+offset_right = 423.0
+offset_bottom = 628.0

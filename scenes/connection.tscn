@@ -29,6 +29,11 @@ func _ready():
 	else: # Triggers if it's an editor placed connection, in which it gets its colour from it's own metadata set by author
 		outerCircle.modulate = self.get_meta(\"connectionColour\")
 		print(\"getting my own\")
+	if not self.get_meta(\"fromPlacer_canBeDeleted\"):
+		print(\"Aaaaaaaaaaaaaaaaaaaaaaaaa\")
+		GlobalData.wire_coords.remove_at(len(GlobalData.wire_coords))
+		GlobalData.wire_coords.remove_at(len(GlobalData.wire_coords))
+		print(len(GlobalData.wire_coords))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

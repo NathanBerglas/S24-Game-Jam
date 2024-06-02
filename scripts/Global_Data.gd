@@ -48,8 +48,8 @@ var bridge_coords = []
 
 func intersect_at (start, end, lines):
 	var line = []
-	#if not intersect(start, end, lines):
-	#	return false
+	if not intersect(start, end, lines):
+		return false
 	
 	for n in range(0,len(lines) -1, 1):
 		#the start and end are stored as positions of nodes
@@ -83,8 +83,9 @@ func intersect_at (start, end, lines):
 			continue###this is wrong but for now it'll work
 		var nearby = false
 		for coord in bridge_coords:
-			#30 is just a temporary value
-			if coord.x - px + coord.y - py < 80:
+			var hyp = sqrt(pow(coord.x - px, 2) + pow(coord.y - py, 2))
+			
+			if coord.x - px + coord.y - py < 75:#used manhattan distance, but probably should use true distance
 				print("huh???")
 				nearby = true
 				break
@@ -109,10 +110,12 @@ func intersect (start, end, lines):
 			continue
 		#trust the process or have a look at https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
 		if orient1 * orient2 <= 0 and (orient1 != orient2) and orient3 * orient4 <= 0 and (orient3 != orient4):
-			print(n)
+			print(lines[n].x)
+			print(lines[n].y)
+			
 			return true
 		elif orient1 == orient2 and orient1 == orient3 and orient1 == orient4 and orient1 == 0:
-			print(n)
+			print(len(lines))
 			return true
 	return false
 
