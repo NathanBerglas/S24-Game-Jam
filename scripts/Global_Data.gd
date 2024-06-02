@@ -23,6 +23,9 @@ func push_cost():
 #for Buttons
 var item = 0
 
+#for grid points
+var gridpoints = []
+
 
 
 

@@ -30,6 +30,8 @@ var pricePerPixel = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#bring cursor to front
+	cursor.z_index = 3
 	cursorOuterCircle.modulate = self.get_meta("Colour") # Sets colour of cursor
 	var preexisting = get_tree().get_nodes_in_group(self.get_meta("Target")) # Gets all the pre-existing node in its colour
 	for pCon in preexisting:
@@ -66,10 +68,10 @@ func placing_wire():
 	cursor.position = get_viewport().get_mouse_position() # move cursor to player mouse
 	if (connectorCount >= 2): # Means a line must be drawn from active connector to possible new one
 		additionalCost = connectorPrice + get_viewport().get_mouse_position().distance_to(placedConnectorsLocations[GlobalData.activeConnector]) * pricePerPixel
-		for placedConLoc in placedConnectorsLocations: # For each placed connector location, check to see if it too close to where player wants to place it
-			if get_viewport().get_mouse_position().distance_to(placedConLoc) < 50:
+		for point in GlobalData.gridpoints: # For each placed connector location, check to see if it too close to where player wants to place it
+			if get_viewport().get_mouse_position().distance_to(point.position) < 50:
 				additionalCost -= connectorPrice
-				cursor.position = placedConLoc # Snaps to existing connector
+				cursor.position = point.position # Snaps to existing connector
 	if (additionalCost != 0):
 		GlobalData.cur_cost = floor(additionalCost)
 
@@ -79,6 +81,18 @@ func _input(event):
 	if GlobalData.placing_mode_on && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT and event.pressed: # if a player places a wire or connector
 		var index = 0 # Enumerates for loop
 		var skip = false
+		
+		#check if the point is valid
+		var isValid = false
+		for point in GlobalData.gridpoints:
+			if cursor.position.distance_to(point.position) < 50:
+				cursor.position = point.position
+				isValid = true
+		if not isValid:
+			#if this is not a valid point, don't bother trying to draw it
+			return
+		
+		
 		for placedConLoc in placedConnectorsLocations:
 			if get_viewport().get_mouse_position().distance_to(placedConLoc) < 50: # If connecting a wire to placedConLoc/placedConnector[index]
 				if GlobalData.activeConnector != index: # Checks player is not connecting a wire to itself
@@ -110,7 +124,8 @@ func _input(event):
 			connection_instance.set_meta("connectionColour", self.get_meta("Colour"))
 			connection_instance.set_meta("fromPlacer_canBeDeleted", true)
 			connection_instance.place_wire_begin_signal.connect(place_wire_begin)
-			connection_instance.position = get_viewport().get_mouse_position()
+			connection_instance.position = cursor.position
+			connection_instance.z_index = 3
 			placedConnectorsLocations.append(connection_instance.position)
 			placedConnectors.append(connection_instance)
 			print("New connector")
@@ -125,6 +140,7 @@ func _input(event):
 				wire_instance.end_index = wires[wires.size() - 1][1]
 				wire_instance.start_point = placedConnectorsLocations[wire_instance.start_index]
 				wire_instance.end_point = placedConnectorsLocations[wire_instance.end_index]
+				wire_instance.z_index = 2
 				add_child(wire_instance)
 				wireCreated.emit(wire_instance)
 				GlobalData.wire_coords.append(wire_instance.start_point)
@@ -188,7 +204,7 @@ func _draw():
 	if not enabled:
 		return
 	if connectorCount != 0 and GlobalData.placing_mode_on and GlobalData.activeConnector != -1: # Draw the line from active connector to mouse, showing where wire will be placed
-		draw_line(placedConnectorsLocations[GlobalData.activeConnector], get_viewport().get_mouse_position(), Color.DARK_GOLDENROD, 10.0)
+		draw_line(placedConnectorsLocations[GlobalData.activeConnector], cursor.position, Color.DARK_GOLDENROD, 10.0)
 
 func on_wire_deleted(start_index, end_index, type): # wire is specified ans start_index -> end_index
 	if not enabled or type != self.get_meta("Type"):
