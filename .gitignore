@@ -1,6 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 
-# C# and VScode things
+# C# and VSCode things
 TestConsoleApp
-S24-Game-Jam
+S24-Game-Jam.sln
