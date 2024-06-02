@@ -11,6 +11,11 @@ func _process(_delta):
 	pass
 
 func _on_pressed():
+	var result = check_if_works()
+	print("this connection setup has a validity of: " + str(result))
+	return result
+
+func check_if_works():
 	var red_wires = processed_wires(GlobalData.WireUp_red, GlobalData.ConnectorLocationUp_red)
 	var green_wires = processed_wires(GlobalData.WireUp_green, GlobalData.ConnectorLocationUp_green)
 	var blue_wires = processed_wires(GlobalData.WireUp_blue, GlobalData.ConnectorLocationUp_blue)
@@ -25,9 +30,6 @@ func _on_pressed():
 
 	var all_works = red_works and green_works and blue_works
 
-	print(blue_wires)
-
-	print("this connection setup has a validity of: " + str(all_works))
 	return all_works
 
 
