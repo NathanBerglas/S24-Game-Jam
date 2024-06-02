@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c1id21d2oy7wc" path="res://scenes/main.tscn" id="2_nnnt4"]
 [ext_resource type="Script" path="res://scripts/does_it_work_button.gd" id="4_jixsa"]
 
-[node name="Level One" type="Node2D"]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("done_button")]
 script = ExtResource("1_0n8x8")
+done_button = NodePath("Button")
 
 [node name="House Prefabs" type="Node" parent="."]
 

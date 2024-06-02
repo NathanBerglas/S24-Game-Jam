@@ -4,6 +4,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalData.cur_money = 40000
 	set_viewport_scale(2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
