@@ -11,6 +11,5 @@ offset_right = 1909.0
 offset_bottom = 62.0
 text = "Does it Work?"
 script = ExtResource("1_jpqix")
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

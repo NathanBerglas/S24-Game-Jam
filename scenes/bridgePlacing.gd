@@ -18,7 +18,7 @@ func _input (event) :
 			var b = bridge.instantiate()
 			b.position = get_global_mouse_position()
 			b.visible = true
-			add_child(b)
+			get_parent().add_child(b)
 			GlobalData.bridge_coords.append(b.position)
 			GlobalData.cur_money -= 5000
 
