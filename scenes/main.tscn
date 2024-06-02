@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dfoagigh6nxs7" path="res://scenes/shop_menu.tscn" id="1_y8rx1"]
 [ext_resource type="PackedScene" uid="uid://cs5mjk1hnihsf" path="res://scenes/connector_control.tscn" id="3_lwnty"]
-[ext_resource type="Texture2D" uid="uid://phtewbocm1ug" path="res://art/Background.png" id="5_ai2nv"]
 [ext_resource type="AudioStream" uid="uid://bqasjdj4nxp8y" path="res://art/Sound/backgroundMusic.mp3" id="6_fea7m"]
 [ext_resource type="PackedScene" uid="uid://b1u50nuxvxg4m" path="res://scenes/bridgePlacing.tscn" id="6_ikjtv"]
 [ext_resource type="PackedScene" uid="uid://bb0kr021o3u8e" path="res://scenes/doesItWorkButton.tscn" id="8_kv1n8"]
@@ -14,13 +13,6 @@ position = Vector2(4, -5)
 
 [node name="ConnectorControl" parent="." instance=ExtResource("3_lwnty")]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -101
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-texture = ExtResource("5_ai2nv")
-
 [node name="Bridge2" parent="." instance=ExtResource("6_ikjtv")]
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
@@ -28,5 +20,3 @@ stream = ExtResource("6_fea7m")
 volume_db = -12.18
 autoplay = true
 bus = &"Music"
-
-[node name="DoesItWorkButton" parent="." instance=ExtResource("8_kv1n8")]

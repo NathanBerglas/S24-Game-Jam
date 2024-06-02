@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/test.tscn") # Need to change to level one (or whatever current level should be)
+	get_tree().change_scene_to_file("res://level_one.tscn") # Need to change to level one (or whatever current level should be)
 
 
 func _on_how_2_play_button_pressed():

@@ -7,55 +7,56 @@
 [ext_resource type="PackedScene" uid="uid://ck5kwx2jhrpal" path="res://scenes/House Prefabs/Green-Red_House.tscn" id="4_6eu3p"]
 [ext_resource type="PackedScene" uid="uid://b7y0v2w6q3dku" path="res://scenes/House Prefabs/Green-Blue_House.tscn" id="5_ek7oe"]
 
-[node name="Level One" instance=ExtResource("1_v3qnd")]
+[node name="Level Three" instance=ExtResource("1_v3qnd")]
 
-[node name="Blue_House" parent="." index="0" instance=ExtResource("2_7boww")]
-position = Vector2(960, 540)
-
-[node name="Blue_House2" parent="." index="1" instance=ExtResource("2_7boww")]
-position = Vector2(940, 252)
-
-[node name="Blue_House3" parent="." index="2" instance=ExtResource("2_7boww")]
-position = Vector2(918, 868)
-
-[node name="Blue_House4" parent="." index="3" instance=ExtResource("2_7boww")]
-position = Vector2(570, 452)
-
-[node name="Blue_House5" parent="." index="4" instance=ExtResource("2_7boww")]
-position = Vector2(1782, 121)
-
-[node name="Blue_House6" parent="." index="5" instance=ExtResource("2_7boww")]
-position = Vector2(1296, 557)
-
-[node name="Green-Red-Blue_House" parent="." index="21" instance=ExtResource("2_dqt75")]
+[node name="Green-Red-Blue_House" parent="House Prefabs" index="21" instance=ExtResource("2_dqt75")]
 position = Vector2(624, 177)
 
-[node name="Green-Red-Blue_House2" parent="." index="22" instance=ExtResource("2_dqt75")]
-position = Vector2(371, -477)
+[node name="Green-Red-Blue_House2" parent="House Prefabs" index="22" instance=ExtResource("2_dqt75")]
+position = Vector2(371, -447.905)
 
-[node name="Green_House" parent="." index="23" instance=ExtResource("3_apdpa")]
+[node name="Green_House" parent="House Prefabs" index="23" instance=ExtResource("3_apdpa")]
 position = Vector2(-227, 293)
 
-[node name="Green_House2" parent="." index="24" instance=ExtResource("3_apdpa")]
+[node name="Green_House2" parent="House Prefabs" index="24" instance=ExtResource("3_apdpa")]
 position = Vector2(-29, -420)
 
-[node name="Green_House3" parent="." index="25" instance=ExtResource("3_apdpa")]
+[node name="Green_House3" parent="House Prefabs" index="25" instance=ExtResource("3_apdpa")]
 position = Vector2(330, 1462)
 
-[node name="Green_House4" parent="." index="26" instance=ExtResource("3_apdpa")]
+[node name="Green_House4" parent="House Prefabs" index="26" instance=ExtResource("3_apdpa")]
 position = Vector2(1229, 908)
 
-[node name="Green_House5" parent="." index="27" instance=ExtResource("3_apdpa")]
+[node name="Green_House5" parent="House Prefabs" index="27" instance=ExtResource("3_apdpa")]
 position = Vector2(1493, 902)
 
-[node name="Grren-Red_House" parent="." index="28" instance=ExtResource("4_6eu3p")]
-position = Vector2(960, 1150)
+[node name="Grren-Red_House" parent="House Prefabs" index="28" instance=ExtResource("4_6eu3p")]
+visible = false
+position = Vector2(960, 1000)
 
-[node name="Green_House6" parent="." index="29" instance=ExtResource("3_apdpa")]
+[node name="Green_House6" parent="House Prefabs" index="29" instance=ExtResource("3_apdpa")]
 position = Vector2(1832, 641)
 
-[node name="Green-Blue_House" parent="." index="30" instance=ExtResource("5_ek7oe")]
+[node name="Green-Blue_House" parent="House Prefabs" index="30" instance=ExtResource("5_ek7oe")]
 position = Vector2(1571, -141)
 
-[node name="Green-Blue_House2" parent="." index="31" instance=ExtResource("5_ek7oe")]
+[node name="Green-Blue_House2" parent="House Prefabs" index="31" instance=ExtResource("5_ek7oe")]
 position = Vector2(-627, -466)
+
+[node name="Blue_House9" parent="House Prefabs" index="32" instance=ExtResource("2_7boww")]
+position = Vector2(960, 540)
+
+[node name="Blue_House10" parent="House Prefabs" index="33" instance=ExtResource("2_7boww")]
+position = Vector2(940, 252)
+
+[node name="Blue_House11" parent="House Prefabs" index="34" instance=ExtResource("2_7boww")]
+position = Vector2(918, 868)
+
+[node name="Blue_House12" parent="House Prefabs" index="35" instance=ExtResource("2_7boww")]
+position = Vector2(570, 452)
+
+[node name="Blue_House13" parent="House Prefabs" index="36" instance=ExtResource("2_7boww")]
+position = Vector2(1782, 121)
+
+[node name="Blue_House14" parent="House Prefabs" index="37" instance=ExtResource("2_7boww")]
+position = Vector2(1296, 557)
