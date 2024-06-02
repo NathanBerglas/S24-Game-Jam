@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb0kr021o3u8e"]
+
+[ext_resource type="Script" path="res://scripts/does_it_work_button.gd" id="1_jpqix"]
+
+[node name="DoesItWorkButton" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1795.0
+offset_top = 11.0
+offset_right = 1909.0
+offset_bottom = 62.0
+text = "Does it Work?"
+script = ExtResource("1_jpqix")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
